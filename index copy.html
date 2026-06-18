@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
+  <!-- TODO: Same as paper title above -->
+  <meta property="og:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
+  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="KEYWORD1">
+  <meta property="article:tag" content="KEYWORD2">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="PAPER_TITLE">
+  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
+  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_conference_title" content="CONFERENCE_NAME">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>CLP | CoRL 2026 submission</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/logo_vinuni.png">
+  <link rel="apple-touch-icon" href="static/images/logo_vinuni.png">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <style>
+    .carousel-video {
+      max-height: 300px;
+      object-fit: contain;
+      background: #000;
+      width: 100%;
+    }
+  </style>
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PAPER_TITLE",
+    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "FIRST_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "SECOND_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
+    "abstract": "FULL_ABSTRACT_TEXT_HERE",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "INSTITUTION_OR_LAB_NAME",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- More Works Dropdown
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works from Our Lab</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+         <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Paper Title 1</h5>
+            <p>Brief description of the work and its main contribution.</p>
+            <span class="work-venue">Conference/Journal 2024</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Paper Title 2</h5>
+            <p>Brief description of the work and its main contribution.</p>
+            <span class="work-venue">Conference/Journal 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Paper Title 3</h5>
+            <p>Brief description of the work and its main contribution.</p>
+            <span class="work-venue">Conference/Journal 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div> --> 
+
+  <main id="main-content">
+  <!-- <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Finetuning Vision-Language-Action Models Requires
+Fewer Layers Than You Think</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
+                  <span class="author-block">
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">Institution Name<br>Conference name and year</span>
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                    <span class="link-block">
+                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Supplementary</span>
+                    </a>
+                  </span>
+
+                  <span class="link-block">
+                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- <section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title">Finetuning Vision-Language-Action Models Requires Fewer Layers Than You Think</h1>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Nguyen_Gia_Binh1" target="_blank">Nguyen Gia Binh</a><sup>*</sup>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Trong-Bao_Ho1" target="_blank">Trong-Bao Ho</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Thien-Loc_Ha1" target="_blank">Thien-Loc Ha</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Khoa_Vo1" target="_blank">Khoa Vo</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Philip_Lund_M%C3%B8ller1" target="_blank">Philip Lund Møller</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Quang_Tan_Nguyen1" target="_blank">Quang Tan Nguyen</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Long_Dinh1" target="_blank">Long Dinh</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Tung_Minh_Luu2" target="_blank">Tung Minh Luu</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Tuan_Quang_Dam1" target="_blank">Tuan Quang Dam</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Vu_N._Duong1" target="_blank">Vu N. Duong</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Trung_Le2" target="_blank">Trung Le</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Nghi_D._Q._Bui1" target="_blank">Nghi D. Q. Bui</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Minh_Nhat_VU2" target="_blank">Minh Nhat Vu</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Tran_Nguyen_Le1" target="_blank">Tran Nguyen Le</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~An_Thai_Le1" target="_blank">An Thai Le</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Ngan_Le1" target="_blank">Ngan Le</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Daniel_Sonntag2" target="_blank">Daniel Sonntag</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~James_Zou1" target="_blank">James Zou</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Jan_Peters3" target="_blank">Jan Peters</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Duy_Minh_Ho_Nguyen1" target="_blank">Duy Minh Ho Nguyen</a>,</span>
+            <span class="author-block"><a href="https://openreview.net/profile?id=~Vien_Anh_Ngo1" target="_blank">Vien Anh Ngo</a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors" style="margin-top: 0.5rem;">
+            <span class="eql-cntrb"><small><sup>*</sup>First Author</small></span>
+          </div> -->
+
+          <!-- <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px; margin: 1.5rem 0;">
+            <img src="static/images/logo_dtu.png" alt="Technical University of Denmark" style="height: 40px; object-fit: contain;">
+            <img src="static/images/logo_stanford.png" alt="Stanford University" style="height: 40px; object-fit: contain;">
+            <img src="static/images/logo_dfki.png" alt="DFKI" style="height: 40px; object-fit: contain;">
+            <img src="static/images/logo_imprs.png" alt="IMPRS-IS" style="height: 40px; object-fit: contain;">
+            <img src="static/images/logo_vr.jpg" alt="VinRobotics" style="height: 40px; object-fit: contain;">
+            <img src="static/images/logo_vinuni.png" alt="VinUniversity" style="height: 40px; object-fit: contain;">
+          </div> -->
+          <!-- <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px; margin: 1.5rem 0;">
+            <img src="static/images/logo_dtu.png" alt="Technical University of Denmark" style="height: 50px; object-fit: contain;">
+            <img src="static/images/logo_stanford.png" alt="Stanford University" style="height: 50px; object-fit: contain;">
+            <img src="static/images/logo_dfki.png" alt="DFKI" style="height: 50px; object-fit: contain;">
+            <img src="static/images/logo_imprs2.png" alt="IMPRS-IS" style="height: 50px; object-fit: contain;">
+            <img src="static/images/logo_vr2.png" alt="VinRobotics" style="height: 50px; object-fit: contain;">
+            <img src="static/images/logo_vinuni.png" alt="VinUniversity" style="height: 50px; object-fit: contain;">
+          </div>
+
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark" style="opacity:0.6; cursor:not-allowed; background-color:#000000;" onclick="return false;">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper <small style="margin-left:4px; background:#333333; padding:1px 6px; border-radius:999px; font-size:0.7rem;">Coming Soon</small></span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark" style="opacity:0.6; cursor:not-allowed; background-color:#000000;" onclick="return false;">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code <small style="margin-left:4px; background:#333333; padding:1px 6px; border-radius:999px; font-size:0.7rem;">Coming Soon</small></span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark" style="opacity:0.6; cursor:not-allowed; background-color:#000000;" onclick="return false;">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv <small style="margin-left:4px; background:#333333; padding:1px 6px; border-radius:999px; font-size:0.7rem;">Coming Soon</small></span>
+                </a>
+              </span>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <h1 class="title is-1 publication-title" style="
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 2.6rem;
+            font-weight: 900;
+            line-height: 1.2;
+            color: #111111;
+            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
+          ">
+            Finetuning
+            <span style="color: #D94F1E;">Vision-Language-Action</span>
+            Models Requires Fewer Layers Than You Think
+          </h1>
+
+          <div class="is-size-5 publication-authors" style="
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-style: italic;
+            font-size: 1rem;
+            color: #444444;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+          ">
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Nguyen_Gia_Binh1" target="_blank"
+                 style="color: #D94F1E; font-weight: 700; font-style: normal; text-decoration: none;">
+                Nguyen Gia Binh</a><sup>*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Trong-Bao_Ho1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Trong-Bao Ho</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Thien-Loc_Ha1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Thien-Loc Ha</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Khoa_Vo1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Khoa Vo</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Philip_Lund_M%C3%B8ller1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Philip Lund Møller</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Quang_Tan_Nguyen1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Quang Tan Nguyen</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Long_Dinh1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Long Dinh</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Tung_Minh_Luu2" target="_blank"
+                 style="color: #222222; text-decoration: none;">Tung Minh Luu</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Tuan_Quang_Dam1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Tuan Quang Dam</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Vu_N._Duong1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Vu N. Duong</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Trung_Le2" target="_blank"
+                 style="color: #222222; text-decoration: none;">Trung Le</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Nghi_D._Q._Bui1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Nghi D. Q. Bui</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Minh_Nhat_VU2" target="_blank"
+                 style="color: #222222; text-decoration: none;">Minh Nhat Vu</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Tran_Nguyen_Le1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Tran Nguyen Le</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~An_Thai_Le1" target="_blank"
+                 style="color: #222222; text-decoration: none;">An Thai Le</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Ngan_Le1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Ngan Le</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Daniel_Sonntag2" target="_blank"
+                 style="color: #222222; text-decoration: none;">Daniel Sonntag</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~James_Zou1" target="_blank"
+                 style="color: #222222; text-decoration: none;">James Zou</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Jan_Peters3" target="_blank"
+                 style="color: #222222; text-decoration: none;">Jan Peters</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Duy_Minh_Ho_Nguyen1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Duy Minh Ho Nguyen</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Vien_Anh_Ngo1" target="_blank"
+                 style="color: #222222; text-decoration: none;">Vien Anh Ngo</a>
+            </span>
+          </div>
+
+          <!-- Institution logos — increased to 70px for better balance with text -->
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 28px; margin: 1.5rem 0;">
+            <img src="static/images/logo_dtu.png" alt="Technical University of Denmark" style="height: 70px; object-fit: contain;">
+            <img src="static/images/logo_stanford.png" alt="Stanford University" style="height: 70px; object-fit: contain;">
+            <img src="static/images/logo_dfki.png" alt="DFKI" style="height: 70px; object-fit: contain;">
+            <img src="static/images/logo_imprs2.png" alt="IMPRS-IS" style="height: 70px; object-fit: contain;">
+            <img src="static/images/logo_vr2.png" alt="VinRobotics" style="height: 70px; object-fit: contain;">
+            <img src="static/images/logo_vinuni.png" alt="VinUniversity" style="height: 70px; object-fit: contain;">
+          </div>
+
+          <!-- Links -->
+          <div class="column has-text-centered">
+            <div class="publication-links">
+
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark" style="opacity:0.6; cursor:not-allowed; background-color:#111111;" onclick="return false;">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper <small style="margin-left:4px; background:#333333; padding:1px 6px; border-radius:999px; font-size:0.7rem;">Coming Soon</small></span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark" style="opacity:0.6; cursor:not-allowed; background-color:#111111;" onclick="return false;">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code <small style="margin-left:4px; background:#333333; padding:1px 6px; border-radius:999px; font-size:0.7rem;">Coming Soon</small></span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark" style="opacity:0.6; cursor:not-allowed; background-color:#111111;" onclick="return false;">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv <small style="margin-left:4px; background:#333333; padding:1px 6px; border-radius:999px; font-size:0.7rem;">Coming Soon</small></span>
+                </a>
+              </span>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- TODO: Replace with your teaser video -->
+      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
+        <!-- TODO: Add your video file path here -->
+        <source src="static/videos/full_paper.mp4" type="video/mp4">
+      </video>
+      <!-- TODO: Replace with your video description -->
+      <h2 class="subtitle has-text-centered">
+        Video presentaion
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<!-- <section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          Vision-Language-Action (VLA) models pre-trained on massive video-robot datasets have revolutionized robotic manipulation, yet their multi-billion parameter architectures impose prohibitive computational burdens during downstream fine-tuning and real-time inference. In this work, we reveal a highly non-trivial architectural characteristic of these continuous control foundation policies (e.g., π0, GR00T-N1.5): despite being trained on diverse physical trajectories, they exhibit severe layer-wise representational redundancy. To exploit this, we introduce a structural compression pipeline that is entirely training-free, bypassing the need of existing methods to load full-scale models to learn optimized token reductions or dynamic layer selectors. Instead, using only a single forward pass via Centered Kernel Alignment to identify redundant layer features, we remove twin layers to permanently compress the model depth by up to 50% across both the VLM backbone and the continuous control policy head. Downstream fine-tuning of this streamlined architecture yields a dual acceleration benefit: a 40–50% reduction in training time and up to 30% faster real-time inference, while matching or exceeding full-scale base model performance. We comprehensively validate our method across three simulation benchmarks (LIBERO, RoboCasa, SimplerEnv) and 10 diverse real-world manipulation tasks across 4 unique robotic embodiments. These results prove that advanced VLAs require significantly fewer layers than previously assumed, offering a highly compute-efficient paradigm for scalable robot learning.  
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light" style="background: #f7f4ef; padding: 4rem 1.5rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <!-- "ABSTRACT" label -->
+        <p style="
+          font-family: 'Georgia', serif;
+          font-size: 0.72rem;
+          font-weight: 700;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: #D94F1E;
+          margin-bottom: 0.6rem;
+        ">Abstract</p>
+
+        <!-- Thesis headline -->
+        <h2 style="
+          font-family: 'Georgia', 'Times New Roman', serif;
+          font-size: 2.1rem;
+          font-weight: 700;
+          line-height: 1.25;
+          color: #111;
+          margin-bottom: 2rem;
+          letter-spacing: -0.3px;
+        ">VLA models are far more compressible than we assumed.</h2>
+
+        <!-- Two-column body: stats left, paragraphs right -->
+        <div style="display: flex; gap: 3rem; flex-wrap: wrap; align-items: flex-start;">
+
+          <!-- Left: key stats -->
+          <div style="min-width: 150px; flex: 0 0 160px; padding-top: 0.2rem;">
+
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.2rem;">Memory</p>
+            <p style="font-family:'Georgia',serif; font-size:2rem; font-weight:700; color:#111; margin:0;">↓33%</p>
+            <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#D94F1E; margin:0 0 1.4rem;">footprint reduced</p>
+
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.2rem;">Training</p>
+            <p style="font-family:'Georgia',serif; font-size:2rem; font-weight:700; color:#111; margin:0;">40–50%</p>
+            <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#D94F1E; margin:0 0 1.4rem;">time &amp; cost saved</p>
+
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.2rem;">Inference</p>
+            <p style="font-family:'Georgia',serif; font-size:2rem; font-weight:700; color:#111; margin:0;">×1.33</p>
+            <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#D94F1E; margin:0;">real-time speedup</p>
+
+          </div>
+
+          <!-- Right: abstract paragraphs -->
+          <div style="flex:1; min-width:260px;">
+
+            <p style="font-family:'Georgia',serif; font-size:1rem; color:#222; line-height:1.8; margin-bottom:1.2rem;">
+              Despite their remarkable capabilities, Vision-Language-Action (VLA) models impose prohibitive computational costs at fine-tuning and deployment time. We reveal a highly non-trivial architectural property of leading continuous-control foundations (π0, GR00T-N1.5): despite training on diverse physical trajectories, these models exhibit severe <strong>layer-wise representational redundancy</strong>.
+            </p>
+
+            <p style="font-family:'Georgia',serif; font-size:1rem; color:#222; line-height:1.8; margin-bottom:1.2rem;">
+              To exploit this, we introduce <strong>CLP</strong> — a training-free structural compression pipeline. Using a single forward pass via Centered Kernel Alignment (CKA), CLP identifies and removes redundant twin layers, permanently compressing model depth by up to 50% across both the VLM backbone and the continuous-control policy head, without any auxiliary routing or early-exit modules.
+            </p>
+
+            <p style="font-family:'Georgia',serif; font-size:1rem; color:#222; line-height:1.8;">
+              Downstream fine-tuning of the streamlined architecture delivers a dual benefit: <strong>40–50% faster training</strong> and up to <strong>30% faster real-time inference</strong>, while matching or exceeding full-scale performance. We validate across three simulation benchmarks (LIBERO, RoboCasa, SimplerEnv) and <strong>10 real-world manipulation tasks</strong> spanning 4 robotic embodiments — proving that advanced VLAs require significantly fewer layers than previously assumed.
+            </p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+<!-- End paper abstract -->
+
+
+<!-- Contributions -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Contributions</h2>
+        <div class="content">
+          <ul>
+            <li><strong>Accessible Adaptation of SOTA VLAs:</strong> We demonstrate that SOTA continuous-control foundations (such as π0 and GR00T-N1.5) can be fine-tuned with substantially reduced depth, lowering memory, training, and inference cost without introducing auxiliary routing or early-exit modules.</li>
+            <li><strong>Pre-Finetuning Backbone Compression:</strong> To this end, we propose CLP, a simple calibration-based framework that identifies representationally redundant transformer blocks using CKA and removes them before downstream adaptation.</li>
+            <li><strong>Diversified Multi-Embodiment Validation:</strong> We conduct extensive evaluations across multiple simulation benchmarks and 10 real-world manipulation tasks spanning four robotic embodiments, demonstrating that our non-invasive depth reduction is robust, platform-agnostic, and highly generalizable. Beyond achieving competitive performance against prior acceleration methods, CLP consistently improves sample efficiency under limited-data regimes, acting as an effective structural regularizer.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Contributions -->
+
+
+<!-- Highlights -->
+<section class="section" style="background: #f5f5f5;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Highlights</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+
+      <!-- <div style="background:#fff; border-radius:12px; padding: 1.2rem 1.4rem; min-width:130px; flex:1;">
+        <p style="font-size:2rem; font-weight:700; color:#0f6e56; margin:0;">3</p>
+        <p style="font-size:0.9rem; color:#444; margin:0;">SOTA VLA families</p>
+      </div> -->
+
+      <div style="background:#fff; border-radius:12px; padding: 1.2rem 1.4rem; min-width:130px; flex:1;">
+        <p style="font-size:2rem; font-weight:700; color:#0f6e56; margin:0;">↓33%</p>
+        <p style="font-size:0.9rem; color:#444; margin:0;">memory footprint</p>
+      </div>
+
+      <div style="background:#fff; border-radius:12px; padding: 1.2rem 1.4rem; min-width:130px; flex:1;">
+        <p style="font-size:2rem; font-weight:700; color:#0f6e56; margin:0;">30–50%</p>
+        <p style="font-size:0.9rem; color:#444; margin:0;">training time &amp; cost saved</p>
+      </div>
+
+      <div style="background:#fff; border-radius:12px; padding: 1.2rem 1.4rem; min-width:130px; flex:1;">
+        <p style="font-size:2rem; font-weight:700; color:#0f6e56; margin:0;">x1.33</p>
+        <p style="font-size:0.9rem; color:#444; margin:0;">inference speedup</p>
+      </div>
+
+      <div style="background:#fff; border-radius:12px; padding: 1.2rem 1.4rem; min-width:130px; flex:1;">
+        <p style="font-size:2rem; font-weight:700; color:#0f6e56; margin:0;">3</p>
+        <p style="font-size:0.9rem; color:#444; margin:0;">simulation benchmarks</p>
+      </div>
+
+      <div style="background:#fff; border-radius:12px; padding: 1.2rem 1.4rem; min-width:130px; flex:1;">
+        <p style="font-size:2rem; font-weight:700; color:#0f6e56; margin:0;">10</p>
+        <p style="font-size:0.9rem; color:#444; margin:0;">real-world robot tasks</p>
+      </div>
+
+      <!-- <div style="background:#fff; border-radius:12px; padding: 1.2rem 1.4rem; min-width:130px; flex:1;">
+        <p style="font-size:2rem; font-weight:700; color:#0f6e56; margin:0;">4</p>
+        <p style="font-size:0.9rem; color:#444; margin:0;">robot embodiments</p>
+      </div> -->
+
+    </div>
+  </div>
+</section>
+<!-- End Highlights -->
+
+
+<!-- Key Findings Section -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Key Findings</h2>
+
+    <!-- Finding 1: CKA Similarity -->
+    <div style="background:#fff; border: 0.5px solid #e0e0e0; border-radius:12px; padding: 1.4rem; margin-bottom: 1.25rem; display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
+      <div style="flex:1; min-width:260px;">
+        <img src="static/images/cka.png" alt="CKA similarity heatmaps for pi0 and GR00T-N1.5" style="width:100%; border-radius:8px;" loading="lazy"/>
+      </div>
+      <div style="flex:1; min-width:200px;">
+        <p style="font-size:1.1rem; font-weight:600; color:#0f6e56; margin-bottom:0.5rem;">VLA layers are highly redundant</p>
+        <p style="font-size:0.95rem; color:#444; line-height:1.7;">CKA similarity heatmaps reveal that large contiguous blocks of layers in both π0 and GR00T-N1.5 produce nearly identical hidden representations — dark red regions indicate near-perfect similarity. This redundancy exists across the VLM backbone, action expert, VL self-attention, and DiT heads, motivating our training-free compression approach.</p>
+      </div>
+    </div>
+
+    <!-- Finding 2: Pruning ratio vs performance -->
+    <!-- <div style="background:#fff; border: 0.5px solid #e0e0e0; border-radius:12px; padding: 1.4rem; margin-bottom: 1.25rem; display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
+      <div style="flex:1; min-width:260px;">
+        <img src="static/images/libero_robocasa.jpg" alt="Layer pruning ratio vs success rate on LIBERO and RoboCasa" style="width:100%; border-radius:8px;" loading="lazy"/>
+      </div>
+      <div style="flex:1; min-width:200px;">
+        <p style="font-size:1.1rem; font-weight:600; color:#0f6e56; margin-bottom:0.5rem;">We can prune upto 2/3 transformer layers without significant performance degradation</p>
+        <p style="font-size:0.95rem; color:#444; line-height:1.7;">caption</p>
+      </div>
+    </div> -->
+
+    <div style="background:#fff; border: 0.5px solid #e0e0e0; border-radius:12px; padding: 1.4rem; margin-bottom: 1.25rem; display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
+      <div style="flex:1; min-width:260px;">
+        <img src="static/images/libero_robocasa.jpg" alt="Layer pruning ratio vs success rate on LIBERO and RoboCasa" style="width:100%; border-radius:8px;" loading="lazy"/>
+      </div>
+      <div style="flex:1; min-width:200px;">
+        <p style="font-size:1.1rem; font-weight:600; color:#0f6e56; margin-bottom:0.5rem;">Up to 2/3 of transformer layers can be pruned with minimal performance loss</p>
+        <p style="font-size:0.95rem; color:#444; line-height:1.7;">Layer pruning ratio vs. success rate on LIBERO (π0) and RoboCasa (GR00T-N1.5). Both models maintain flat performance profiles up to a 50% pruning ratio, enabling FLOPs reductions of ×1.39 and ×1.42 respectively with negligible loss in success rate, validating that a substantial fraction of deep VLA layers are functionally redundant.</p>
+      </div>
+    </div>
+
+    <!-- Finding 3: Training time vs success rate -->
+    <div style="background:#fff; border: 0.5px solid #e0e0e0; border-radius:12px; padding: 1.4rem; margin-bottom: 1.25rem; display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
+      <div style="flex:1; min-width:260px;">
+        <img src="static/images/training_time.jpg" alt="Training time and success rate comparison on real-world tasks" style="width:100%; border-radius:8px;" loading="lazy"/>
+      </div>
+      <div style="flex:1; min-width:200px;">
+        <p style="font-size:1.1rem; font-weight:600; color:#0f6e56; margin-bottom:0.5rem;">Trains much faster, even performs better</p>
+        <p style="font-size:0.95rem; color:#444; line-height:1.7;">CLP-compressed models finish fine-tuning significantly faster than the full-scale baseline — while matching or <strong>exceeding task success rates</strong>. On BananaToPot, CLP reaches <strong>75% success</strong> in far less time than the base model achieving 65%.</p>
+      </div>
+    </div>
+
+    <!-- Finding 4: Hidden state PCA -->
+    <div style="background:#fff; border: 0.5px solid #e0e0e0; border-radius:12px; padding: 1.4rem; display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;">
+      <div style="flex:1; min-width:260px;">
+        <img src="static/images/hs_pca.jpg" alt="Hidden state PCA distribution before and after finetuning" style="width:100%; border-radius:8px;" loading="lazy"/>
+      </div>
+      <div style="flex:1; min-width:200px;">
+        <p style="font-size:1.1rem; font-weight:600; color:#0f6e56; margin-bottom:0.5rem;">Pruned model recovers base model behavior</p>
+        <p style="font-size:0.95rem; color:#444; line-height:1.7;">Hidden state PCA shows that before fine-tuning, the pruned model's representations diverge from the base model. After fine-tuning, the distributions <strong>realign closely</strong> — confirming that CLP preserves the representational structure of the original VLA despite removing up to half its layers.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- End Key Findings -->
+
+
+<!-- Image carousel -->
+<!-- <section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
+
+        <h2 class="subtitle has-text-centered">
+          First image description.
+        </h2>
+      </div>
+      <div class="item">
+        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+          Second image description.
+        </h2>
+      </div>
+      <div class="item">
+        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+         Third image description.
+       </h2>
+     </div>
+     <div class="item">
+      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
+      <h2 class="subtitle has-text-centered">
+        Fourth image description.
+      </h2>
+    </div>
+  </div>
+</div>
+</div>
+</section> -->
+<!-- End image carousel -->
+
+
+
+
+<!-- Youtube video -->
+<!-- <section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3">Video Presentation</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+          <div class="publication-video">
+            <iframe src="static/videos/CLP.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- End youtube video -->
+
+<!-- Method Section -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <div class="columns is-centered">
+
+        <!-- Video -->
+        <div class="column is-half">
+          <div class="publication-video">
+            <video controls muted loop width="100%">
+              <source src="static/videos/CLP.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+        <!-- Bullet points -->
+        <div class="column is-half">
+          <h3 class="title is-4" style="color:#0f6e56;">CKA-Guided Layer Pruning (CLP)</h3>
+          <div class="content">
+            <ul>
+              <li><strong>CKA profiling:</strong> Sample batches from diverse datasets and feed them through the pretrained VLA, saving hidden states from every layer to compute pairwise CKA similarity scores.</li>
+              <li><strong>Block identification:</strong> Using a threshold τ, group consecutive layers into redundant blocks where every adjacent pair has CKA similarity ≥ τ. Within each block, keep only the first layer and prune all remaining ones.</li>
+              <li><strong>Training-free compression:</strong> No auxiliary modules, no routing — the pruned architecture is obtained from a single forward pass. Removes 33–66% of transformer layers with ~30% FLOP reduction.</li>
+              <li><strong>Downstream fine-tuning:</strong> The streamlined model is fine-tuned on the target task, cutting training time by up to 50% and inference time by 30–50%.</li>
+              <li><strong>Behavior preserved:</strong> Hidden state PCA confirms the fine-tuned pruned model recovers the internal representational structure of the original base model.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Method Section -->
+
+
+<!-- Video carousel -->
+<!-- <section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Experiments and Results</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-video1">
+          
+          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
+            
+            <source src="static/videos/0.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+          CubeToDrawer
+          </h2>
+        </div>
+        <div class="item item-video2">
+          
+          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
+            
+            <source src="static/videos/1.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+          BananaToPot
+          </h2>
+        </div>
+        <div class="item item-video3">
+          
+          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
+            
+            <source src="static/videos/2.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+          Block Stacking
+          </h2>
+        </div>
+        <div class="item item-video4">
+          
+          <video poster="" id="video4" controls muted loop height="100%" preload="metadata">
+            
+            <source src="static/videos/3.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+          ScrewdriverToBasket
+          </h2>
+        </div>
+        <div class="item item-video5">
+          
+          <video poster="" id="video5" controls muted loop height="100%" preload="metadata">
+            
+            <source src="static/videos/4.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+          Close Kettle
+          </h2>
+        </div>
+        <div class="item item-video6">
+          
+          <video poster="" id="video6" controls muted loop height="100%" preload="metadata">
+            
+            <source src="static/videos/5.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+          Serve Napkin
+          </h2>
+        </div>
+        <div class="item item-video8">
+          
+          <video poster="" id="video8" controls muted loop height="100%" preload="metadata">
+            
+            <source src="static/videos/7.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            Fold short
+          </h2>
+        </div>  
+        <div class="item item-video9">
+          
+          <video poster="" id="video9" controls muted loop height="100%" preload="metadata">
+            
+            <source src="static/videos/8.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+          Open Kettle
+          </h2>
+        </div>
+        <div class="item item-video10">
+          
+          <video poster="" id="video10" controls muted loop height="100%" preload="metadata">
+            
+            <source src="static/videos/9.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+          Fly towel
+          </h2>
+        </div>
+        <div class="item item-video11">
+          <video poster="" id="video11" controls muted loop height="100%" preload="metadata">
+            <source src="static/videos/10.mp4" type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+          Groceries ToBasket
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+End video carousel -->
+
+
+
+
+
+<!-- Experiments and Results -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Experiments and Results</h2>
+
+    <!-- Simulation Videos -->
+    <h3 class="title is-4" style="color:#0f6e56; margin-top: 2rem;">Simulation Benchmarks</h3>
+    <div id="sim-carousel" class="carousel results-carousel">
+      <div class="item item-video1">
+        <video poster="" id="sim1" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/libero.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">LIBERO</h2>
+      </div>
+      <div class="item item-video2">
+        <video poster="" id="sim2" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/robocasa.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">RoboCasa</h2>
+      </div>
+      <div class="item item-video3">
+        <video poster="" id="sim3" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/simplerenv.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">SimplerEnv</h2>
+      </div>
+    </div>
+
+<!-- LIBERO Benchmark Table -->
+<p class="has-text-centered" style="margin: 1.5rem 0 0.75rem; color:#666;">LIBERO benchmark comparison with training-free acceleration methods.</p>
+<div class="table-container" style="margin-bottom: 2rem;">
+  <table class="table is-bordered is-hoverable is-fullwidth has-text-centered" style="font-size:0.88rem;">
+    <thead>
+      <tr>
+        <th rowspan="2" style="vertical-align:middle; text-align:left;">Method</th>
+        <th colspan="4" style="background:#f5f5f5; color:#333;">Success Rate (%)</th>
+        <th rowspan="2" style="vertical-align:middle; background:#f5f5f5; color:#333;">Avg. SR (%)</th>
+        <th rowspan="2" style="vertical-align:middle; background:#f5f5f5; color:#333;">Speedup ↑</th>
+      </tr>
+      <tr>
+        <th style="background:#f5f5f5;">Spatial</th>
+        <th style="background:#f5f5f5;">Object</th>
+        <th style="background:#f5f5f5;">Goal</th>
+        <th style="background:#f5f5f5;">Long</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- OpenVLA group -->
+      <tr>
+        <td style="text-align:left;">OpenVLA-OFT</td>
+        <td>97.6</td><td>96.5</td><td>97.9</td><td>94.5</td>
+        <td><strong>96.6</strong></td>
+        <td>1.00×</td>
+      </tr>
+      <tr>
+        <td style="text-align:left;">FastV</td>
+        <td>94.6</td><td>95.8</td><td>94.0</td><td>88.8</td>
+        <td>93.3</td>
+        <td>1.44×</td>
+      </tr>
+      <tr>
+        <td style="text-align:left;">DivPrune</td>
+        <td>92.4</td><td>91.2</td><td>89.0</td><td>84.8</td>
+        <td>89.4</td>
+        <td>1.46×</td>
+      </tr>
+      <tr>
+        <td style="text-align:left;">EfficientVLA</td>
+        <td>96.5</td><td>91.1</td><td>96.0</td><td>72.1</td>
+        <td>88.9</td>
+        <td>1.52×</td>
+      </tr>
+      <tr>
+        <td style="text-align:left;">ADP</td>
+        <td>97.6</td><td>98.4</td><td>97.4</td><td>84.2</td>
+        <td>94.4</td>
+        <td>1.35×</td>
+      </tr>
+
+      <!-- π0 group -->
+      <tr style="border-top: 2px solid #ccc;">
+        <td style="text-align:left;">π0</td>
+        <td>94.6</td><td>98.2</td><td>95.4</td><td>90.0</td>
+        <td>94.6</td>
+        <td>1.00×</td>
+      </tr>
+      <tr>
+        <td style="text-align:left;">π0-SpecPrune-VLA</td>
+        <td>96.6</td><td>98.0</td><td>95.2</td><td>84.2</td>
+        <td>93.5</td>
+        <td>1.31×</td>
+      </tr>
+      <tr style="background:#f0faf6;">
+        <td style="text-align:left; font-weight:600;">π0-CLP <span style="background:#0f6e56; color:#fff; font-size:0.72rem; padding:1px 6px; border-radius:999px; margin-left:4px;">Ours</span></td>
+        <td>95.0</td><td><strong>99.2</strong></td><td>95.0</td><td>86.4</td>
+        <td style="font-weight:700; color:#0f6e56;">93.9</td>
+        <td style="font-weight:700; color:#0f6e56;">1.39×</td>
+      </tr>
+
+      <!-- GR00T group -->
+      <tr style="border-top: 2px solid #ccc;">
+        <td style="text-align:left;">GR00T-N1.5</td>
+        <td>90.8</td><td>98.4</td><td>95.4</td><td>91.0</td>
+        <td>93.9</td>
+        <td>1.00×</td>
+      </tr>
+      <tr style="background:#f0faf6;">
+        <td style="text-align:left; font-weight:600;">GR00T-N1.5-CLP <span style="background:#0f6e56; color:#fff; font-size:0.72rem; padding:1px 6px; border-radius:999px; margin-left:4px;">Ours</span></td>
+        <td>89.4</td><td><strong>98.8</strong></td><td><strong>95.8</strong></td><td>88.6</td>
+        <td style="font-weight:700; color:#0f6e56;">93.0</td>
+        <td style="font-weight:700; color:#0f6e56;">1.42×</td>
+      </tr>
+
+      <!-- SmolVLA group -->
+      <tr style="border-top: 2px solid #ccc;">
+        <td style="text-align:left;">SmolVLA</td>
+        <td>71.8</td><td>92.2</td><td>87.4</td><td>57.2</td>
+        <td>77.15</td>
+        <td>1.00×</td>
+      </tr>
+      <tr style="background:#f0faf6;">
+        <td style="text-align:left; font-weight:600;">SmolVLA-CLP <span style="background:#0f6e56; color:#fff; font-size:0.72rem; padding:1px 6px; border-radius:999px; margin-left:4px;">Ours</span></td>
+        <td><strong>75.6</strong></td><td><strong>93.0</strong></td><td>81.6</td><td>56.2</td>
+        <td style="font-weight:700; color:#0f6e56;">76.75</td>
+        <td style="font-weight:700; color:#0f6e56;">1.47×</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- End LIBERO Benchmark Table -->
+
+    <!-- SimplerEnv Table -->
+    <p class="has-text-centered" style="margin: 1.5rem 0 0.75rem; color:#666;">GR00T-N1.5 evaluation on SimplerEnv (WidowX robot). Task success rate (%).</p>
+    <div class="table-container" style="margin-bottom: 3rem;">
+      <table class="table is-bordered is-hoverable is-fullwidth has-text-centered" style="font-size:0.92rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left;">Task</th>
+            <th style="background:#f5f5f5; color:#333;">GR00T-N1.5</th>
+            <th style="background:#0f6e56; color:#fff;">GR00T-N1.5-CLP <span style="background:#fff; color:#0f6e56; font-size:0.72rem; padding:1px 6px; border-radius:999px; margin-left:4px;">Ours</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:left;">Carrot Plate</td>
+            <td>26</td>
+            <td style="background:#f0faf6; font-weight:700; color:#0f6e56;"><strong>34</strong> <span style="font-size:0.78rem;">↑8%</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">Eggplant Basket</td>
+            <td><strong>34</strong></td>
+            <td style="background:#f0faf6;">14</td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">Spoon Towel</td>
+            <td>18</td>
+            <td style="background:#f0faf6; font-weight:700; color:#0f6e56;"><strong>38</strong> <span style="font-size:0.78rem;">↑20%</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">Stack Cube</td>
+            <td><strong>8</strong></td>
+            <td style="background:#f0faf6;">4</td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">Eggplant Sink</td>
+            <td>8</td>
+            <td style="background:#f0faf6; font-weight:700; color:#0f6e56;"><strong>16</strong> <span style="font-size:0.78rem;">↑8%</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">Close Drawer</td>
+            <td>12</td>
+            <td style="background:#f0faf6; font-weight:700; color:#0f6e56;"><strong>24</strong> <span style="font-size:0.78rem;">↑12%</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">Open Drawer</td>
+            <td><strong>10</strong></td>
+            <td style="background:#f0faf6;"><strong>10</strong></td>
+          </tr>
+          <tr style="border-top: 2px solid #0f6e56;">
+            <td style="text-align:left; font-weight:600;">Average</td>
+            <td style="font-weight:600;">16.57</td>
+            <td style="background:#f0faf6; font-weight:700; color:#0f6e56;">20.0 <span style="font-size:0.78rem;">↑3.43%</span></td>
+          </tr>
+          <tr style="background:#fafafa;">
+            <td style="text-align:left; font-weight:600;">Training Time (hrs)</td>
+            <td style="font-weight:600;">22.9</td>
+            <td style="background:#f0faf6; font-weight:700; color:#0f6e56;">15.7 <span style="font-size:0.78rem;">↓31%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Divider -->
+    <hr style="border-top: 1px solid #e0e0e0; margin: 2rem 0;">
+
+    <!-- Real-world Videos -->
+    <h3 class="title is-4" style="color:#0f6e56;">Real-world Manipulation</h3>
+    <div id="results-carousel" class="carousel results-carousel">
+      <div class="item item-video1">
+        <video poster="" id="video1" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/0.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">CubeToDrawer</h2>
+      </div>
+      <div class="item item-video2">
+        <video poster="" id="video2" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/1.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">BananaToPot</h2>
+      </div>
+      <div class="item item-video3">
+        <video poster="" id="video3" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/2.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">Block Stacking</h2>
+      </div>
+      <div class="item item-video4">
+        <video poster="" id="video4" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/3.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">ScrewdriverToBasket</h2>
+      </div>
+      <div class="item item-video5">
+        <video poster="" id="video5" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/4.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">Close Kettle</h2>
+      </div>
+      <div class="item item-video6">
+        <video poster="" id="video6" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/5.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">Serve Napkin</h2>
+      </div>
+      <div class="item item-video8">
+        <video poster="" id="video8" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/7.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">Fold Short</h2>
+      </div>
+      <div class="item item-video9">
+        <video poster="" id="video9" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/8.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">Open Kettle</h2>
+      </div>
+      <div class="item item-video10">
+        <video poster="" id="video10" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/9.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">Fly Towel</h2>
+      </div>
+      <div class="item item-video11">
+        <video poster="" id="video11" controls muted loop height="100%" preload="metadata" class="carousel-video">
+          <source src="static/videos/10.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">Groceries ToBasket</h2>
+      </div>
+    </div>
+
+    <!-- Real-world Table -->
+    <p class="has-text-centered" style="margin: 1.5rem 0 0.75rem; color:#666;">Task success rate (%) and training efficiency across 4 robot embodiments.</p>
+    <div class="table-container">
+      <table class="table is-bordered is-hoverable is-fullwidth has-text-centered" style="font-size:0.88rem;">
+        <thead>
+          <tr>
+            <th rowspan="2" style="vertical-align:middle; text-align:left;">Robot</th>
+            <th rowspan="2" style="vertical-align:middle; text-align:left;">Task</th>
+            <th colspan="2" style="background:#f5f5f5; color:#333;">GR00T-N1.5</th>
+            <th colspan="2" style="background:#0f6e56; color:#fff;">GR00T-N1.5-CLP <span style="background:#fff; color:#0f6e56; font-size:0.72rem; padding:1px 6px; border-radius:999px; margin-left:4px;">Ours</span></th>
+            <th rowspan="2" style="vertical-align:middle; background:#0f6e56; color:#fff; min-width:140px;">Time Saved</th>
+          </tr>
+          <tr>
+            <th style="background:#f5f5f5;">Success<br>Rate (%)</th>
+            <th style="background:#f5f5f5;">Time<br>(hrs)</th>
+            <th style="background:#e6f4f1;">Success<br>Rate (%)</th>
+            <th style="background:#e6f4f1;">Time<br>(hrs)</th>
+          </tr>
+        </thead>
+        <tbody id="combined-table-body">
+          <tr style="background:#f9fefe;">
+            <td rowspan="3" style="vertical-align:middle; text-align:left; font-weight:500; color:#0f6e56;">UR10<br><small style="font-weight:400; color:#666;">Single Arm</small></td>
+            <td style="text-align:left;">Groceries ToBasket</td>
+            <td><strong>90</strong></td><td>11.8</td>
+            <td style="background:#f0faf6;">89</td><td style="background:#f0faf6;"><strong>8.0</strong></td>
+            <td style="background:#f0faf6;"><div class="bar-track"><div class="bar-fill" data-pct="32"></div></div><span class="bar-label">32%</span></td>
+          </tr>
+          <tr style="background:#f9fefe;">
+            <td style="text-align:left;">Open Kettle</td>
+            <td><strong>100</strong></td><td>2.8</td>
+            <td style="background:#f0faf6;">95</td><td style="background:#f0faf6;"><strong>1.4</strong></td>
+            <td style="background:#f0faf6;"><div class="bar-track"><div class="bar-fill" data-pct="50"></div></div><span class="bar-label">50%</span></td>
+          </tr>
+          <tr style="background:#f9fefe;">
+            <td style="text-align:left;">Close Kettle</td>
+            <td><strong>100</strong></td><td>3.0</td>
+            <td style="background:#f0faf6;"><strong>100</strong></td><td style="background:#f0faf6;"><strong>1.5</strong></td>
+            <td style="background:#f0faf6;"><div class="bar-track"><div class="bar-fill" data-pct="50"></div></div><span class="bar-label">50%</span></td>
+          </tr>
+          <tr>
+            <td rowspan="2" style="vertical-align:middle; text-align:left; font-weight:500; color:#0f6e56;">UR5<br><small style="font-weight:400; color:#666;">Single Arm</small></td>
+            <td style="text-align:left;">Serve Napkin</td>
+            <td>45</td><td>1.1</td>
+            <td style="background:#f0faf6;"><strong>65</strong></td><td style="background:#f0faf6;"><strong>0.7</strong></td>
+            <td style="background:#f0faf6;"><div class="bar-track"><div class="bar-fill" data-pct="36"></div></div><span class="bar-label">36%</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">Screwdriver ToBasket</td>
+            <td>15</td><td>1.5</td>
+            <td style="background:#f0faf6;"><strong>30</strong></td><td style="background:#f0faf6;"><strong>1.1</strong></td>
+            <td style="background:#f0faf6;"><div class="bar-track"><div class="bar-fill" data-pct="27"></div></div><span class="bar-label">27%</span></td>
+          </tr>
+          <tr style="background:#f9fefe;">
+            <td rowspan="3" style="vertical-align:middle; text-align:left; font-weight:500; color:#0f6e56;">ALOHA<br><small style="font-weight:400; color:#666;">Single Arm</small></td>
+            <td style="text-align:left;">Banana ToPot</td>
+            <td>65</td><td>5.1</td>
+            <td style="background:#f0faf6;"><strong>75</strong></td><td style="background:#f0faf6;"><strong>2.9</strong></td>
+            <td style="background:#f0faf6;"><div class="bar-track"><div class="bar-fill" data-pct="43"></div></div><span class="bar-label">43%</span></td>
+          </tr>
+          <tr style="background:#f9fefe;">
+            <td style="text-align:left;">Cube ToDrawer</td>
+            <td><strong>75</strong></td><td>5.6</td>
+            <td style="background:#f0faf6;">60</td><td style="background:#f0faf6;"><strong>3.2</strong></td>
+            <td style="background:#f0faf6;"><div class="bar-track"><div class="bar-fill" data-pct="43"></div></div><span class="bar-label">43%</span></td>
+          </tr>
+          <tr style="background:#f9fefe;">
+            <td style="text-align:left;">Block Stacking</td>
+            <td><strong>80</strong></td><td>2.8</td>
+            <td style="background:#f0faf6;">75</td><td style="background:#f0faf6;"><strong>1.4</strong></td>
+            <td style="background:#f0faf6;"><div class="bar-track"><div class="bar-fill" data-pct="50"></div></div><span class="bar-label">50%</span></td>
+          </tr>
+          <tr>
+            <td rowspan="2" style="vertical-align:middle; text-align:left; font-weight:500; color:#0f6e56;">ALOHA<br><small style="font-weight:400; color:#666;">Bimanual</small></td>
+            <td style="text-align:left;">Fold Shorts</td>
+            <td>90</td><td>6.5</td>
+            <td style="background:#f0faf6;"><strong>95</strong></td><td style="background:#f0faf6;"><strong>4.4</strong></td>
+            <td style="background:#f0faf6;"><div class="bar-track"><div class="bar-fill" data-pct="32"></div></div><span class="bar-label">32%</span></td>
+          </tr>
+          <tr>
+            <td style="text-align:left;">Fly Towel</td>
+            <td><strong>75</strong></td><td>3.2</td>
+            <td style="background:#f0faf6;">70</td><td style="background:#f0faf6;"><strong>2.1</strong></td>
+            <td style="background:#f0faf6;"><div class="bar-track"><div class="bar-fill" data-pct="34"></div></div><span class="bar-label">34%</span></td>
+          </tr>
+          <tr style="border-top: 2px solid #0f6e56;">
+            <td colspan="2" style="text-align:right; font-weight:600;">Average / Total</td>
+            <td style="font-weight:600;">73.5</td>
+            <td style="font-weight:600;">43.4h</td>
+            <td style="background:#f0faf6; font-weight:700; color:#0f6e56;">75.9</td>
+            <td style="background:#f0faf6; font-weight:700; color:#0f6e56;">27.7h</td>
+            <td style="background:#f0faf6;"><div class="bar-track"><div class="bar-fill" data-pct="36"></div></div><span class="bar-label" style="font-weight:700; color:#0f6e56;">36%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.bar-track {
+  display: inline-block;
+  width: 75px;
+  height: 8px;
+  background: #d1e8e2;
+  border-radius: 999px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.bar-fill {
+  height: 100%;
+  width: 0;
+  background: #0f6e56;
+  border-radius: 999px;
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+.bar-label {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: #0f6e56;
+  vertical-align: middle;
+}
+</style>
+
+<script>
+(function() {
+  var animated = false;
+  var observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !animated) {
+      animated = true;
+      document.querySelectorAll('.bar-fill').forEach(function(bar) {
+        var pct = bar.getAttribute('data-pct');
+        setTimeout(function() { bar.style.width = pct + '%'; }, 100);
+      });
+      observer.disconnect();
+    }
+  }, { threshold: 0.2 });
+  observer.observe(document.getElementById('combined-table-body'));
+})();
+</script>
+<!-- End Experiments and Results -->
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@article{NguyenGiaBinh2026FewerLayers,
+  title={Finetuning Vision-Language-Action Models Requires Fewer Layers Than You Think},
+  author={Nguyen Gia Binh and Trong-Bao Ho and Thien-Loc Ha and Khoa Vo and Philip Lund M{\o}ller and Quang Tan Nguyen and Long Dinh and Tung Minh Luu and Tuan Quang Dam and Vu N. Duong and Trung Le and Nghi D. Q. Bui and Minh Nhat Vu and Tran Nguyen Le and An Thai Le and Ngan Le and Daniel Sonntag and James Zou and Jan Peters and Duy Minh Ho Nguyen and Vien Anh Ngo},
+  journal={arXiv preprint},
+  year={2026},
+  url={https://your-domain.com/your-project-page}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>

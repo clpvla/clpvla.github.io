@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
+  <!-- TODO: Same as paper title above -->
+  <meta property="og:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
+  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="KEYWORD1">
+  <meta property="article:tag" content="KEYWORD2">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="PAPER_TITLE">
+  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
+  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_conference_title" content="CONFERENCE_NAME">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>CLP | CoRL 2026 submission</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/logo_vinuni.png">
+  <link rel="apple-touch-icon" href="static/images/logo_vinuni.png">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  <style>
+    .carousel-video {
+      max-height: 300px;
+      object-fit: contain;
+      background: #000;
+      width: 100%;
+    }
+    .figure-card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+      padding: 24px;
+    }
+
+    .figure-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    .figure-divider {
+      border: none;
+      border-top: 1px solid #e5e5e5;
+      margin: 20px 0 16px;
+    }
+
+    .figure-caption {
+      margin: 0;
+      color: #888;
+      font-variant: all-small-caps;
+      letter-spacing: 0.03em;
+      text-align: center;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .figure-caption-label {
+      font-weight: 700;
+    }
+  </style>
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PAPER_TITLE",
+    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "FIRST_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "SECOND_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
+    "abstract": "FULL_ABSTRACT_TEXT_HERE",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "INSTITUTION_OR_LAB_NAME",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+<!-- ================= HERO: TITLE / AUTHORS / LINKS ================= -->
+<section class="hero" style="background:#f7f4ef;">
+  <div class="hero-body" style="padding: 4rem 1.5rem 2.5rem;">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+
+          <!-- <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#D94F1E; margin-bottom:0.9rem;">
+            arXiv Preprint &middot; 2026
+          </p> -->
+
+          <h1 class="title is-1 publication-title" style="
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 2.6rem;
+            font-weight: 900;
+            line-height: 1.2;
+            color: #111111;
+            letter-spacing: -0.5px;
+            margin-bottom: 1.3rem;
+          ">
+            Finetuning
+            <span style="color: #D94F1E;">Vision-Language-Action</span>
+            Models Requires Fewer Layers Than You Think
+          </h1>
+
+          <div class="is-size-5 publication-authors" style="
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-style: normal;
+            font-size: 0.95rem;
+            color: #5b5b5b;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 0.6rem;
+          ">
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Nguyen_Gia_Binh1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">
+                Gia-Binh Nguyen</a><sup style="font-size:0.65em;">1,2,*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Trong-Bao_Ho1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Trong-Bao Ho</a><sup style="font-size:0.65em;">2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Thien-Loc_Ha1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Thien-Loc Ha</a><sup style="font-size:0.65em;">2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Khoa_Vo1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Khoa Vo</a><sup style="font-size:0.65em;">3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Philip_Lund_M%C3%B8ller1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Philip Lund Møller</a><sup style="font-size:0.65em;">4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Quang_Tan_Nguyen1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Quang T. Nguyen</a><sup style="font-size:0.65em;">2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Long_Dinh1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Long Dinh</a><sup style="font-size:0.65em;">1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Tuan_Quang_Dam1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Tuan Dam</a><sup style="font-size:0.65em;">5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Vu_N._Duong1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Vu Duong</a><sup style="font-size:0.65em;">1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Tung_Minh_Luu2" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Tung M. Luu</a><sup style="font-size:0.65em;">6</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Trung_Le2" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Trung Le</a><sup style="font-size:0.65em;">7</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Tran_Nguyen_Le1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Tran Nguyen Le</a><sup style="font-size:0.65em;">4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Minh_Nhat_VU2" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Minh Vu</a><sup style="font-size:0.65em;">1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~An_Thai_Le1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">An Thai Le</a><sup style="font-size:0.65em;">1,2,13</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Ngan_Le1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Ngan Le</a><sup style="font-size:0.65em;">3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Daniel_Sonntag2" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Daniel Sonntag</a><sup style="font-size:0.65em;">8,9</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~James_Zou1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">James Zou</a><sup style="font-size:0.65em;">12</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Jan_Peters3" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Jan Peters</a><sup style="font-size:0.65em;">9,13</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Duy_Minh_Ho_Nguyen1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Duy M. H. Nguyen</a><sup style="font-size:0.65em;">†,9,10,11</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Vien_Anh_Ngo1" target="_blank"
+                style="color: #5b5b5b; font-weight: 700; text-decoration: none;">Ngo Anh Vien</a><sup style="font-size:0.65em;">†,1,2</sup>
+            </span>
+          </div>
+
+          <p style="font-family:'Georgia',serif; font-size:0.78rem; color:#666; max-width:800px; margin:0 auto 0.3rem; line-height:1.6;">
+            <sup>1</sup>Center for AI Research, VinUniversity &nbsp;
+            <sup>2</sup>VinRobotics &nbsp;
+            <sup>3</sup>University of Arkansas &nbsp;
+            <sup>4</sup>Technical University of Denmark &nbsp;
+            <sup>5</sup>Hanoi University of Science and Technology &nbsp;
+            <sup>6</sup>KAIST &nbsp;
+            <sup>7</sup>Monash University &nbsp;
+            <sup>8</sup>Oldenburg University &nbsp;
+            <sup>9</sup>DFKI &nbsp;
+            <sup>10</sup>University of Stuttgart &nbsp;
+            <sup>11</sup>IMPRS-IS &nbsp;
+            <sup>12</sup>Stanford University &nbsp;
+            <sup>13</sup>Technische Universität Darmstadt &nbsp;
+            <br><sup>†</sup>Project Leads.
+          </p>
+
+          <!-- <p style="font-family:'Georgia',serif; font-size:0.74rem; color:#888; margin:0 0 1.8rem;">
+            <sup>*</sup>Corresponding author
+          </p> -->
+
+          <!-- Institution logos, wrapped in cards to match the abstract's badge language -->
+          <div style="display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:18px; margin: 1.6rem 0 2.2rem;">
+            <div style="background:#fff; border:1px solid #e0ddd8; border-radius:8px; padding:0.5rem 1.1rem; display:flex; align-items:center;">
+              <img src="static/images/logo_dtu.png" alt="Technical University of Denmark" style="height: 56px; object-fit: contain;">
+            </div>
+            <div style="background:#fff; border:1px solid #e0ddd8; border-radius:8px; padding:0.5rem 1.1rem; display:flex; align-items:center;">
+              <img src="static/images/logo_stanford.png" alt="Stanford University" style="height: 56px; object-fit: contain;">
+            </div>
+            <div style="background:#fff; border:1px solid #e0ddd8; border-radius:8px; padding:0.5rem 1.1rem; display:flex; align-items:center;">
+              <img src="static/images/logo_dfki.png" alt="DFKI" style="height: 56px; object-fit: contain;">
+            </div>
+            <div style="background:#fff; border:1px solid #e0ddd8; border-radius:8px; padding:0.5rem 1.1rem; display:flex; align-items:center;">
+              <img src="static/images/logo_arkansas.svg" alt="University of Arkansas" style="height: 56px; object-fit: contain;">
+            </div>
+            <div style="background:#fff; border:1px solid #e0ddd8; border-radius:8px; padding:0.5rem 1.1rem; display:flex; align-items:center;">
+              <img src="static/images/logo_imprs2.png" alt="IMPRS-IS" style="height: 56px; object-fit: contain;">
+            </div>
+            <div style="background:#fff; border:1px solid #e0ddd8; border-radius:8px; padding:0.5rem 1.1rem; display:flex; align-items:center;">
+              <img src="static/images/logo_vr2.png" alt="VinRobotics" style="height: 56px; object-fit: contain;">
+            </div>
+            <div style="background:#fff; border:1px solid #e0ddd8; border-radius:8px; padding:0.5rem 1.1rem; display:flex; align-items:center;">
+              <img src="static/images/logo_vinuni.png" alt="VinUniversity" style="height: 56px; object-fit: contain;">
+            </div>
+          </div>
+
+          <!-- Links -->
+          <div class="column has-text-centered" style="padding:0;">
+            <div class="publication-links" style="display:flex; justify-content:center; gap:0.7rem; flex-wrap:wrap;">
+
+              <a href="#" onclick="return false;" class="pub-link is-disabled" style="
+                display:inline-flex; align-items:center; gap:0.5rem;
+                font-family:'Georgia',serif; font-weight:700; font-size:0.85rem;
+                color:#111; background:#fff; border:1px solid #e0ddd8;
+                border-radius:6px; padding:0.55rem 1.1rem;
+                opacity:0.65; cursor:not-allowed; text-decoration:none;
+              ">
+                <i class="fas fa-file-pdf" style="color:#D94F1E;"></i>
+                <span>Paper</span>
+                <small style="background:#D94F1E; color:#fff; padding:1px 7px; border-radius:4px; font-size:0.62rem; letter-spacing:0.03em; text-transform:uppercase;">Coming Soon</small>
+              </a>
+
+              <a href="#" onclick="return false;" class="pub-link is-disabled" style="
+                display:inline-flex; align-items:center; gap:0.5rem;
+                font-family:'Georgia',serif; font-weight:700; font-size:0.85rem;
+                color:#111; background:#fff; border:1px solid #e0ddd8;
+                border-radius:6px; padding:0.55rem 1.1rem;
+                opacity:0.65; cursor:not-allowed; text-decoration:none;
+              ">
+                <i class="fab fa-github" style="color:#D94F1E;"></i>
+                <span>Code</span>
+                <small style="background:#D94F1E; color:#fff; padding:1px 7px; border-radius:4px; font-size:0.62rem; letter-spacing:0.03em; text-transform:uppercase;">Coming Soon</small>
+              </a>
+
+              <a href="#" onclick="return false;" class="pub-link is-disabled" style="
+                display:inline-flex; align-items:center; gap:0.5rem;
+                font-family:'Georgia',serif; font-weight:700; font-size:0.85rem;
+                color:#111; background:#fff; border:1px solid #e0ddd8;
+                border-radius:6px; padding:0.55rem 1.1rem;
+                opacity:0.65; cursor:not-allowed; text-decoration:none;
+              ">
+                <i class="ai ai-arxiv" style="color:#D94F1E;"></i>
+                <span>arXiv</span>
+                <small style="background:#D94F1E; color:#fff; padding:1px 7px; border-radius:4px; font-size:0.62rem; letter-spacing:0.03em; text-transform:uppercase;">Coming Soon</small>
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+
+<!-- Teaser video-->
+<!-- <section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
+        <source src="static/videos/full_paper.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Video presentaion
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="figure-card">
+        <img src="static/images/CLS_Pruning_v2.png" alt="Overview of the proposed CLP framework" id="tree">
+        <hr class="figure-divider">
+        <p class="figure-caption">
+          <span class="figure-caption-label">Overview of the proposed CLP framework.</span> CLP prunes representationally redundant transformer
+          layers via CKA, reducing network depth by up to 66% and training/inference cost by up to 50%. Fine-tuning
+          restores the latent geometry of the compressed model, enabling competitive performance across three simulation
+          benchmarks, 10 real-world tasks, and four robotic embodiments.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End teaser figure -->
+<!-- End teaser video -->
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light" style="background: #f7f4ef; padding: 4rem 1.5rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#D94F1E; margin-bottom:0.6rem;">Abstract</p>
+        <h2 style="font-family:'Georgia','Times New Roman',serif; font-size:2.1rem; font-weight:700; line-height:1.25; color:#111; margin-bottom:2rem; letter-spacing:-0.3px;">VLA models are far more compressible than we assumed.</h2>
+
+        <!-- Two-column body: stats left, paragraphs right -->
+        <div style="display:flex; gap:3rem; flex-wrap:wrap; align-items:flex-start;">
+
+          <!-- Left: key stats -->
+          <div style="min-width:150px; flex:0 0 160px; padding-top:0.2rem;">
+
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.6rem;">Validated on</p>
+            <!-- Model logos as img badges -->
+            <div style="display:flex; flex-direction:column; gap:0.45rem; margin-bottom:1.4rem;">
+              <div style="display:inline-flex; align-items:center; gap:0.5rem; background:#fff; border:1px solid #e0ddd8; border-radius:6px; padding:0.3rem 0.55rem; width:fit-content;">
+                <img src="static/images/logo_gr00t.jpg" alt="NVIDIA GR00T" style="height:18px; width:auto; object-fit:contain; border-radius:2px;">
+                <span style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; color:#111;">GR00T-N1.5</span>
+              </div>
+              <div style="display:inline-flex; align-items:center; gap:0.5rem; background:#fff; border:1px solid #e0ddd8; border-radius:6px; padding:0.3rem 0.55rem; width:fit-content;">
+                <img src="static/images/logo_pi.jpg" alt="pi0" style="height:18px; width:auto; object-fit:contain; border-radius:2px;">
+                <span style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; color:#111;">π0</span>
+              </div>
+              <div style="display:inline-flex; align-items:center; gap:0.5rem; background:#fff; border:1px solid #e0ddd8; border-radius:6px; padding:0.3rem 0.55rem; width:fit-content;">
+                <img src="static/images/logo_smol.jpg" alt="SmolVLA" style="height:18px; width:auto; object-fit:contain; border-radius:2px;">
+                <span style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; color:#111;">SmolVLA</span>
+              </div>
+            </div>
+
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.2rem;">Memory</p>
+            <p style="font-family:'Georgia',serif; font-size:2rem; font-weight:700; color:#111; margin:0;">↓33%</p>
+            <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#D94F1E; margin:0 0 1.4rem;">footprint reduced</p>
+
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.2rem;">Training</p>
+            <p style="font-family:'Georgia',serif; font-size:2rem; font-weight:700; color:#111; margin:0;">40–50%</p>
+            <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#D94F1E; margin:0 0 1.4rem;">time &amp; cost saved</p>
+
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.2rem;">Inference</p>
+            <p style="font-family:'Georgia',serif; font-size:2rem; font-weight:700; color:#111; margin:0;">×1.33</p>
+            <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#D94F1E; margin:0;">real-time speedup</p>
+
+          </div>
+
+          <!-- Right: abstract paragraphs -->
+          <div style="flex:1; min-width:260px;">
+
+            <p style="font-family:'Georgia',serif; font-size:1rem; color:#222; line-height:1.8; margin-bottom:1.2rem;">
+              Despite their remarkable capabilities, Vision-Language-Action (VLA) models impose prohibitive computational costs at fine-tuning and deployment time. We reveal a highly non-trivial architectural property of leading continuous-control foundations (π0, GR00T-N1.5): despite training on diverse physical trajectories, these models exhibit severe <strong>layer-wise representational redundancy</strong>.
+            </p>
+
+            <p style="font-family:'Georgia',serif; font-size:1rem; color:#222; line-height:1.8; margin-bottom:1.2rem;">
+              To exploit this, we introduce <strong>CLP</strong> — a training-free structural compression pipeline. Using a single forward pass via Centered Kernel Alignment (CKA), CLP identifies and removes redundant twin layers, permanently compressing model depth by up to 50% across both the VLM backbone and the continuous-control policy head, without any auxiliary routing or early-exit modules.
+            </p>
+
+            <p style="font-family:'Georgia',serif; font-size:1rem; color:#222; line-height:1.8;">
+              Downstream fine-tuning of the streamlined architecture delivers a dual benefit: <strong>40–50% faster training</strong> and up to <strong>30% faster real-time inference</strong>, while matching or exceeding full-scale performance. We validate across three simulation benchmarks (LIBERO, RoboCasa, SimplerEnv) and <strong>10 real-world manipulation tasks</strong> spanning 4 robotic embodiments — proving that advanced VLAs require significantly fewer layers than previously assumed.
+            </p>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Contributions -->
+<section class="section" style="background:#fdf9f7; padding: 4rem 1.5rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#D94F1E; margin-bottom:0.6rem;">Contributions</p>
+        <h2 style="font-family:'Georgia','Times New Roman',serif; font-size:2.1rem; font-weight:700; line-height:1.25; color:#111; margin-bottom:2rem; letter-spacing:-0.3px;">Three concrete advances in efficient VLA adaptation.</h2>
+
+        <div style="display:flex; flex-direction:column; gap:1.5rem;">
+
+          <div style="display:flex; gap:1.5rem; align-items:flex-start;">
+            <div style="flex:0 0 auto; width:2.2rem; height:2.2rem; border-radius:50%; background:#111; display:flex; align-items:center; justify-content:center; margin-top:0.1rem;">
+              <span style="font-family:'Georgia',serif; font-size:0.85rem; font-weight:700; color:#fff;">1</span>
+            </div>
+            <div>
+              <p style="font-family:'Georgia',serif; font-size:1rem; font-weight:700; color:#111; margin:0 0 0.3rem;">Accessible adaptation of SOTA VLAs</p>
+              <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#444; line-height:1.8; margin:0;">π0 and GR00T-N1.5 fine-tuned at reduced depth — lower memory, training, and inference cost with no auxiliary modules.</p>
+            </div>
+          </div>
+
+          <div style="border-top:0.5px solid #e0ddd8;"></div>
+
+          <div style="display:flex; gap:1.5rem; align-items:flex-start;">
+            <div style="flex:0 0 auto; width:2.2rem; height:2.2rem; border-radius:50%; background:#111; display:flex; align-items:center; justify-content:center; margin-top:0.1rem;">
+              <span style="font-family:'Georgia',serif; font-size:0.85rem; font-weight:700; color:#fff;">2</span>
+            </div>
+            <div>
+              <p style="font-family:'Georgia',serif; font-size:1rem; font-weight:700; color:#111; margin:0 0 0.3rem;">Pre-finetuning compression via CLP</p>
+              <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#444; line-height:1.8; margin:0;">CKA identifies redundant transformer blocks and removes them entirely before adaptation — <strong>no retraining required</strong>.</p>
+            </div>
+          </div>
+
+          <div style="border-top:0.5px solid #e0ddd8;"></div>
+
+          <div style="display:flex; gap:1.5rem; align-items:flex-start;">
+            <div style="flex:0 0 auto; width:2.2rem; height:2.2rem; border-radius:50%; background:#111; display:flex; align-items:center; justify-content:center; margin-top:0.1rem;">
+              <span style="font-family:'Georgia',serif; font-size:0.85rem; font-weight:700; color:#fff;">3</span>
+            </div>
+            <div>
+              <p style="font-family:'Georgia',serif; font-size:1rem; font-weight:700; color:#111; margin:0 0 0.3rem;">Multi-embodiment validation</p>
+              <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#444; line-height:1.8; margin:0;">Validated on 3 sim benchmarks and 10 real-world tasks across 4 robots. CLP is platform-agnostic and acts as an effective <strong>structural regularizer</strong> under limited data.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Contributions -->
+
+
+<!-- Key Findings -->
+<section class="section" style="background:#fff; padding: 4rem 1.5rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#D94F1E; margin-bottom:0.6rem;">Key Findings</p>
+        <h2 style="font-family:'Georgia','Times New Roman',serif; font-size:2.1rem; font-weight:700; line-height:1.25; color:#111; margin-bottom:2.5rem; letter-spacing:-0.3px;">What we discovered inside large VLA models.</h2>
+
+        <div style="display:flex; gap:2rem; align-items:flex-start; flex-wrap:wrap; margin-bottom:3rem; padding-bottom:3rem; border-bottom:0.5px solid #e0ddd8;">
+          <div style="flex:1; min-width:240px;">
+            <img src="static/images/cka.png" alt="CKA similarity heatmaps" style="width:100%; border-radius:8px;" loading="lazy"/>
+          </div>
+          <div style="flex:1; min-width:200px; padding-top:0.3rem;">
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.4rem;">Finding 01</p>
+            <p style="font-family:'Georgia',serif; font-size:1.15rem; font-weight:700; color:#111; margin:0 0 0.7rem; line-height:1.3;">VLA layers are highly redundant</p>
+            <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#444; line-height:1.8; margin:0;">CKA heatmaps reveal large contiguous blocks in π0 and GR00T-N1.5 producing <strong>nearly identical representations</strong> — spanning the VLM backbone, action expert, and DiT heads.</p>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:2rem; align-items:flex-start; flex-wrap:wrap; margin-bottom:3rem; padding-bottom:3rem; border-bottom:0.5px solid #e0ddd8;">
+          <div style="flex:1; min-width:240px;">
+            <img src="static/images/libero_robocasa.jpg" alt="Layer pruning ratio vs success rate" style="width:100%; border-radius:8px;" loading="lazy"/>
+          </div>
+          <div style="flex:1; min-width:200px; padding-top:0.3rem;">
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.4rem;">Finding 02</p>
+            <p style="font-family:'Georgia',serif; font-size:1.15rem; font-weight:700; color:#111; margin:0 0 0.7rem; line-height:1.3;">Up to 2/3 of layers can be pruned with minimal loss</p>
+            <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#444; line-height:1.8; margin:0;">Both π0 and GR00T-N1.5 maintain flat performance up to 50% pruning, achieving <strong>×1.39–1.42 FLOPs reduction</strong> with negligible success rate drop.</p>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:2rem; align-items:flex-start; flex-wrap:wrap; margin-bottom:3rem; padding-bottom:3rem; border-bottom:0.5px solid #e0ddd8;">
+          <div style="flex:1; min-width:240px;">
+            <img src="static/images/training_time.jpg" alt="Training time comparison" style="width:100%; border-radius:8px;" loading="lazy"/>
+          </div>
+          <div style="flex:1; min-width:200px; padding-top:0.3rem;">
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.4rem;">Finding 03</p>
+            <p style="font-family:'Georgia',serif; font-size:1.15rem; font-weight:700; color:#111; margin:0 0 0.7rem; line-height:1.3;">Trains faster — and often performs better</p>
+            <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#444; line-height:1.8; margin:0;">CLP trains significantly faster while matching or <strong>exceeding baseline success rates</strong> — e.g. 75% vs 65% on BananaToPot in less time.</p>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:2rem; align-items:flex-start; flex-wrap:wrap;">
+          <div style="flex:1; min-width:240px;">
+            <img src="static/images/hs_pca.jpg" alt="Hidden state PCA" style="width:100%; border-radius:8px;" loading="lazy"/>
+          </div>
+          <div style="flex:1; min-width:200px; padding-top:0.3rem;">
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.4rem;">Finding 04</p>
+            <p style="font-family:'Georgia',serif; font-size:1.15rem; font-weight:700; color:#111; margin:0 0 0.7rem; line-height:1.3;">Pruned models recover base model behavior after finetuning</p>
+            <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#444; line-height:1.8; margin:0;">Hidden state PCA shows representations <strong>realign closely</strong> with the base model post-finetuning — confirming CLP preserves representational structure despite removing up to half the layers.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Key Findings -->
+
+
+<!-- Highlights -->
+<!-- <section class="section" style="background: #f7f4ef; padding: 4rem 1.5rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#D94F1E; margin-bottom:0.6rem;">Highlights</p>
+        <h2 style="font-family:'Georgia','Times New Roman',serif; font-size:2.1rem; font-weight:700; line-height:1.25; color:#111; margin-bottom:2rem; letter-spacing:-0.3px;">Faster, leaner, and just as capable.</h2>
+
+        <div style="display:flex; flex-wrap:wrap; gap:1px; background:#e0ddd8; border:1px solid #e0ddd8; border-radius:12px; overflow:hidden;">
+
+          <div style="background:#fff; padding:1.4rem 1.6rem; flex:1; min-width:130px;">
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.25rem;">Memory</p>
+            <p style="font-family:'Georgia',serif; font-size:2rem; font-weight:700; color:#111; margin:0;">↓33%</p>
+            <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#D94F1E; margin:0;">footprint reduced</p>
+          </div>
+
+          <div style="background:#fff; padding:1.4rem 1.6rem; flex:1; min-width:130px;">
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.25rem;">Training</p>
+            <p style="font-family:'Georgia',serif; font-size:2rem; font-weight:700; color:#111; margin:0;">40–50%</p>
+            <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#D94F1E; margin:0;">time &amp; cost saved</p>
+          </div>
+
+          <div style="background:#fff; padding:1.4rem 1.6rem; flex:1; min-width:130px;">
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.25rem;">Inference</p>
+            <p style="font-family:'Georgia',serif; font-size:2rem; font-weight:700; color:#111; margin:0;">×1.33</p>
+            <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#D94F1E; margin:0;">real-time speedup</p>
+          </div>
+
+          <div style="background:#fff; padding:1.4rem 1.6rem; flex:1; min-width:130px;">
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.25rem;">Simulation</p>
+            <p style="font-family:'Georgia',serif; font-size:2rem; font-weight:700; color:#111; margin:0;">3</p>
+            <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#D94F1E; margin:0;">benchmarks tested</p>
+          </div>
+
+          <div style="background:#fff; padding:1.4rem 1.6rem; flex:1; min-width:130px;">
+            <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.25rem;">Real-world</p>
+            <p style="font-family:'Georgia',serif; font-size:2rem; font-weight:700; color:#111; margin:0;">10</p>
+            <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#D94F1E; margin:0;">robot tasks</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- End Highlights -->
+
+
+
+<!-- Method Section -->
+<section class="section" style="background:#fff; padding: 4rem 1.5rem;">
+  <div class="container is-max-desktop">
+
+    <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#D94F1E; margin-bottom:0.6rem;">Method</p>
+    <h2 style="font-family:'Georgia','Times New Roman',serif; font-size:2.1rem; font-weight:700; line-height:1.25; color:#111; margin-bottom:2.5rem; letter-spacing:-0.3px;">One forward pass. No extra modules. Up to 50% faster training.</h2>
+
+    <div style="display:flex; gap:3rem; align-items:center; flex-wrap:wrap;">
+
+      <!-- Video -->
+      <!-- <div style="flex:1 1 340px; min-width:280px; position:relative;" id="clp-video-wrap">
+        <video id="clp-video" autoplay loop playsinline style="width:100%; border-radius:10px; background:#111; cursor:pointer; display:block;">
+          <source src="static/videos/CLP_v2.mp4" type="video/mp4">
+        </video>
+        <div id="clp-controls" style="position:absolute; bottom:0; left:0; right:0; padding:0.5rem 0.75rem; background:linear-gradient(transparent, rgba(0,0,0,0.55)); border-radius:0 0 10px 10px; opacity:0; transition:opacity 0.2s; display:flex; align-items:center; gap:0.6rem;">
+          <button id="clp-playbtn" onclick="clpTogglePlay()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1rem; padding:0; line-height:1; flex-shrink:0;">&#9646;&#9646;</button>
+          <input id="clp-seek" type="range" min="0" max="100" value="0" step="0.1" style="flex:1; height:3px; accent-color:#D94F1E; cursor:pointer;">
+          <span id="clp-time" style="font-family:'Georgia',serif; font-size:0.7rem; color:#ddd; white-space:nowrap; flex-shrink:0;">0:00</span>
+        </div>
+        <div id="clp-pause-icon" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:2.5rem; color:#fff; opacity:0; pointer-events:none; transition:opacity 0.15s; text-shadow:0 2px 8px rgba(0,0,0,0.5);">&#9646;&#9646;</div>
+      </div> -->
+
+            <!-- Video -->
+      <div style="flex:1 1 340px; min-width:280px; position:relative;" id="clp-video-wrap">
+        <video id="clp-video" autoplay loop muted playsinline style="width:100%; border-radius:10px; background:#111; cursor:pointer; display:block;">
+          <source src="static/videos/CLP_v2.mp4" type="video/mp4">
+        </video>
+        <div id="clp-controls" style="position:absolute; bottom:0; left:0; right:0; padding:0.5rem 0.75rem; background:linear-gradient(transparent, rgba(0,0,0,0.55)); border-radius:0 0 10px 10px; opacity:0; transition:opacity 0.2s; display:flex; align-items:center; gap:0.6rem;">
+          <button id="clp-playbtn" onclick="clpTogglePlay()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1rem; padding:0; line-height:1; flex-shrink:0;">&#9646;&#9646;</button>
+          <input id="clp-seek" type="range" min="0" max="100" value="0" step="0.1" style="flex:1; height:3px; accent-color:#D94F1E; cursor:pointer;">
+          <span id="clp-time" style="font-family:'Georgia',serif; font-size:0.7rem; color:#ddd; white-space:nowrap; flex-shrink:0;">0:00</span>
+          <button id="clp-mutebtn" onclick="clpToggleMute()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1rem; padding:0; line-height:1; flex-shrink:0;">&#128263;</button>
+        </div>
+        <div id="clp-pause-icon" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:2.5rem; color:#fff; opacity:0; pointer-events:none; transition:opacity 0.15s; text-shadow:0 2px 8px rgba(0,0,0,0.5);">&#9646;&#9646;</div>
+      </div>
+
+      <script>
+      (function() {
+        var vid = document.getElementById('clp-video');
+        var wrap = document.getElementById('clp-video-wrap');
+        var controls = document.getElementById('clp-controls');
+        var seek = document.getElementById('clp-seek');
+        var timeEl = document.getElementById('clp-time');
+        var playBtn = document.getElementById('clp-playbtn');
+        var pauseIcon = document.getElementById('clp-pause-icon');
+        var hideTimer;
+
+        function showControls() {
+          controls.style.opacity = '1';
+          clearTimeout(hideTimer);
+          hideTimer = setTimeout(function() { if (!vid.paused) controls.style.opacity = '0'; }, 2500);
+        }
+
+        wrap.addEventListener('mouseenter', showControls);
+        wrap.addEventListener('mousemove', showControls);
+        wrap.addEventListener('mouseleave', function() {
+          if (!vid.paused) { clearTimeout(hideTimer); controls.style.opacity = '0'; }
+        });
+
+        vid.addEventListener('click', function() { clpTogglePlay(); });
+
+        window.clpTogglePlay = function() {
+          if (vid.paused) {
+            vid.play();
+            playBtn.innerHTML = '&#9646;&#9646;';
+            flashIcon('&#9654;');
+          } else {
+            vid.pause();
+            playBtn.innerHTML = '&#9654;';
+            flashIcon('&#9646;&#9646;');
+            controls.style.opacity = '1';
+          }
+          showControls();
+        };
+
+        window.clpToggleMute = function() {
+          var video = document.getElementById('clp-video');
+          video.muted = !video.muted;
+          document.getElementById('clp-mutebtn').innerHTML = video.muted ? '&#128263;' : '&#128266;';
+        };
+
+        function flashIcon(icon) {
+          pauseIcon.innerHTML = icon;
+          pauseIcon.style.opacity = '0.85';
+          setTimeout(function() { pauseIcon.style.opacity = '0'; }, 600);
+        }
+
+        vid.addEventListener('timeupdate', function() {
+          if (!vid.duration) return;
+          seek.value = (vid.currentTime / vid.duration) * 100;
+          var m = Math.floor(vid.currentTime / 60);
+          var s = Math.floor(vid.currentTime % 60);
+          timeEl.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+        });
+
+        seek.addEventListener('input', function() {
+          if (vid.duration) vid.currentTime = (seek.value / 100) * vid.duration;
+          showControls();
+        });
+
+        vid.loop = true;
+      })();
+      </script>
+
+
+      <!-- Steps -->
+      <div style="flex:1 1 300px; min-width:260px;">
+        <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 1.2rem;">CKA-Guided Layer Pruning (CLP)</p>
+
+        <div style="display:flex; flex-direction:column; gap:1.1rem;">
+
+          <div style="display:flex; gap:0.9rem; align-items:flex-start;">
+            <span style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; color:#D94F1E; min-width:1.4rem; padding-top:2px;">01</span>
+            <div>
+              <p style="font-family:'Georgia',serif; font-size:0.88rem; font-weight:700; color:#111; margin:0 0 0.2rem;">CKA Profiling</p>
+              <p style="font-family:'Georgia',serif; font-size:0.83rem; color:#555; margin:0; line-height:1.5;">Feed sample batches through the pretrained VLA and compute pairwise CKA similarity across all layers.</p>
+            </div>
+          </div>
+
+          <div style="border-top:0.5px solid #e8e5e0;"></div>
+
+          <div style="display:flex; gap:0.9rem; align-items:flex-start;">
+            <span style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; color:#D94F1E; min-width:1.4rem; padding-top:2px;">02</span>
+            <div>
+              <p style="font-family:'Georgia',serif; font-size:0.88rem; font-weight:700; color:#111; margin:0 0 0.2rem;">Block Identification</p>
+              <p style="font-family:'Georgia',serif; font-size:0.83rem; color:#555; margin:0; line-height:1.5;">Group consecutive high-similarity layers (CKA ≥ τ) into redundant blocks; keep only the first layer of each.</p>
+            </div>
+          </div>
+
+          <div style="border-top:0.5px solid #e8e5e0;"></div>
+
+          <div style="display:flex; gap:0.9rem; align-items:flex-start;">
+            <span style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; color:#D94F1E; min-width:1.4rem; padding-top:2px;">03</span>
+            <div>
+              <p style="font-family:'Georgia',serif; font-size:0.88rem; font-weight:700; color:#111; margin:0 0 0.2rem;">Training-free Compression</p>
+              <p style="font-family:'Georgia',serif; font-size:0.83rem; color:#555; margin:0; line-height:1.5;">Prune 33–66% of transformer layers with ~30% FLOP reduction — no routing, no auxiliary modules.</p>
+            </div>
+          </div>
+
+          <div style="border-top:0.5px solid #e8e5e0;"></div>
+
+          <div style="display:flex; gap:0.9rem; align-items:flex-start;">
+            <span style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; color:#D94F1E; min-width:1.4rem; padding-top:2px;">04</span>
+            <div>
+              <p style="font-family:'Georgia',serif; font-size:0.88rem; font-weight:700; color:#111; margin:0 0 0.2rem;">Fine-tune &amp; Deploy</p>
+              <p style="font-family:'Georgia',serif; font-size:0.83rem; color:#555; margin:0; line-height:1.5;">Fine-tune the pruned model on the target task. Training time cuts up to 50%; inference up to 30–50% faster.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- End Method Section -->
+
+
+<!-- Experiments and Results -->
+<section class="section" style="background:#fff; padding: 4rem 1.5rem;">
+  <div class="container is-max-desktop">
+
+    <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#D94F1E; margin-bottom:0.6rem;">Experiments &amp; Results</p>
+    <h2 style="font-family:'Georgia','Times New Roman',serif; font-size:2.1rem; font-weight:700; line-height:1.25; color:#111; margin-bottom:2.5rem; letter-spacing:-0.3px;">Validated across simulation and 4 real-world robot embodiments.</h2>
+
+    <!-- ── REAL-WORLD ── -->
+    <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.9rem;">Real-world Manipulation</p>
+
+    <!-- UR10 row -->
+    <div style="margin-bottom:1.5rem;">
+      <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#111; margin:0 0 0.5rem;">UR10 — Single Arm</p>
+      <div style="position:relative;">
+        <button onclick="scrollRow('row-ur10',-1)" class="vrow-btn" style="left:-1.5rem;">‹</button>
+        <div id="row-ur10" class="vrow" style="justify-content:center;">
+          <div class="vcard"><video muted loop autoplay loop muted playsinline class="vthumb"><source src="static/videos/10.mp4" type="video/mp4"></video><p class="vlabel">Groceries ToBasket</p></div>
+          <div class="vcard"><video muted loop autoplay loop muted playsinline class="vthumb"><source src="static/videos/8.mp4" type="video/mp4"></video><p class="vlabel">Open Kettle</p></div>
+          <div class="vcard"><video muted loop autoplay loop muted playsinline class="vthumb"><source src="static/videos/4.mp4" type="video/mp4"></video><p class="vlabel">Close Kettle</p></div>
+        </div>
+        <button onclick="scrollRow('row-ur10',1)" class="vrow-btn" style="right:-1.5rem;">›</button>
+      </div>
+    </div>
+
+    <!-- UR5 row -->
+    <div style="margin-bottom:1.5rem;">
+      <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#111; margin:0 0 0.5rem;">UR5 — Single Arm</p>
+      <div style="position:relative;">
+        <button onclick="scrollRow('row-ur5',-1)" class="vrow-btn" style="left:-1.5rem;">‹</button>
+        <div id="row-ur5" class="vrow" style="justify-content:center;">
+          <div class="vcard"><video muted loop autoplay loop muted playsinline class="vthumb"><source src="static/videos/5.mp4" type="video/mp4"></video><p class="vlabel">Serve Napkin</p></div>
+          <div class="vcard"><video muted loop autoplay loop muted playsinline class="vthumb"><source src="static/videos/3.mp4" type="video/mp4"></video><p class="vlabel">ScrewdriverToBasket</p></div>
+        </div>
+        <button onclick="scrollRow('row-ur5',1)" class="vrow-btn" style="right:-1.5rem;">›</button>
+      </div>
+    </div>
+
+    <!-- ALOHA Single row -->
+    <div style="margin-bottom:1.5rem;">
+      <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#111; margin:0 0 0.5rem;">ALOHA — Single Arm</p>
+      <div style="position:relative;">
+        <button onclick="scrollRow('row-aloha1',-1)" class="vrow-btn" style="left:-1.5rem;">‹</button>
+        <div id="row-aloha1" class="vrow" style="justify-content:center;">
+          <div class="vcard"><video muted loop autoplay loop muted playsinline class="vthumb"><source src="static/videos/1.mp4" type="video/mp4"></video><p class="vlabel">BananaToPot</p></div>
+          <div class="vcard"><video muted loop autoplay loop muted playsinline class="vthumb"><source src="static/videos/0.mp4" type="video/mp4"></video><p class="vlabel">CubeToDrawer</p></div>
+          <div class="vcard"><video muted loop autoplay loop muted playsinline class="vthumb"><source src="static/videos/2.mp4" type="video/mp4"></video><p class="vlabel">Block Stacking</p></div>
+        </div>
+        <button onclick="scrollRow('row-aloha1',1)" class="vrow-btn" style="right:-1.5rem;">›</button>
+      </div>
+    </div>
+
+    <!-- ALOHA Bimanual row -->
+    <div style="margin-bottom:2rem;">
+      <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:#111; margin:0 0 0.5rem;">ALOHA — Bimanual</p>
+      <div style="position:relative;">
+        <button onclick="scrollRow('row-aloha2',-1)" class="vrow-btn" style="left:-1.5rem;">‹</button>
+        <div id="row-aloha2" class="vrow" style="justify-content:center;">
+          <div class="vcard"><video muted loop autoplay loop muted playsinline class="vthumb"><source src="static/videos/7.mp4" type="video/mp4"></video><p class="vlabel">Fold Shorts</p></div>
+
+           <div class="vcard"><video muted loop autoplay loop muted playsinline class="vthumb"><source src="static/videos/9.mp4" type="video/mp4"></video><p class="vlabel">Fly Towel</p></div>
+
+        </div>
+        <button onclick="scrollRow('row-aloha2',1)" class="vrow-btn" style="right:-1.5rem;">›</button>
+      </div>
+    </div>
+
+    <!-- Real-world table -->
+    <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#888; margin:0 0 0.6rem; text-align:center;">Task success rate (%) and training efficiency across 4 robot embodiments.</p>
+    <div style="overflow-x:auto; margin-bottom:3rem;">
+      <table style="width:100%; border-collapse:collapse; font-family:'Georgia',serif; font-size:0.86rem; color:#222;">
+        <thead>
+          <tr style="border-bottom:2px solid #111;">
+            <th style="text-align:left; padding:0.5rem 0.6rem; font-weight:700;">Robot</th>
+            <th style="text-align:left; padding:0.5rem 0.6rem; font-weight:700;">Task</th>
+            <th style="text-align:center; padding:0.5rem 0.4rem; color:#888; font-weight:600; font-size:0.78rem;">SR (%)</th>
+            <th style="text-align:center; padding:0.5rem 0.4rem; color:#888; font-weight:600; font-size:0.78rem;">Time (h)</th>
+            <th style="text-align:center; padding:0.5rem 0.4rem; font-weight:700; color:#D94F1E;">SR-CLP (%)</th>
+            <th style="text-align:center; padding:0.5rem 0.4rem; font-weight:700; color:#D94F1E;">Time-CLP (h)</th>
+            <th style="text-align:center; padding:0.5rem 0.4rem; font-weight:700;">Saved</th>
+          </tr>
+        </thead>
+        <tbody id="combined-table-body">
+          <tr style="border-top:0.5px solid #e8e5e0;"><td rowspan="3" style="padding:0.45rem 0.6rem; vertical-align:middle; font-weight:700; color:#111;">UR10<br><small style="font-weight:400; color:#888;">Single Arm</small></td><td style="padding:0.45rem 0.6rem;">Groceries ToBasket</td><td style="text-align:center; font-weight:700;">90</td><td style="text-align:center;">11.8</td><td style="text-align:center;">89</td><td style="text-align:center; font-weight:700; color:#D94F1E;">8.0</td><td style="text-align:center;"><span class="barlabel">32%</span><div class="btrack"><div class="bfill" data-pct="32"></div></div></td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">Open Kettle</td><td style="text-align:center; font-weight:700;">100</td><td style="text-align:center;">2.8</td><td style="text-align:center;">95</td><td style="text-align:center; font-weight:700; color:#D94F1E;">1.4</td><td style="text-align:center;"><span class="barlabel">50%</span><div class="btrack"><div class="bfill" data-pct="50"></div></div></td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">Close Kettle</td><td style="text-align:center; font-weight:700;">100</td><td style="text-align:center;">3.0</td><td style="text-align:center; font-weight:700;">100</td><td style="text-align:center; font-weight:700; color:#D94F1E;">1.5</td><td style="text-align:center;"><span class="barlabel">50%</span><div class="btrack"><div class="bfill" data-pct="50"></div></div></td></tr>
+
+          <tr style="border-top:1px solid #e8e5e0;"><td rowspan="2" style="padding:0.45rem 0.6rem; vertical-align:middle; font-weight:700; color:#111;">UR5<br><small style="font-weight:400; color:#888;">Single Arm</small></td><td style="padding:0.45rem 0.6rem;">Serve Napkin</td><td style="text-align:center;">45</td><td style="text-align:center;">1.1</td><td style="text-align:center; font-weight:700; color:#D94F1E;">65</td><td style="text-align:center; font-weight:700; color:#D94F1E;">0.7</td><td style="text-align:center;"><span class="barlabel">36%</span><div class="btrack"><div class="bfill" data-pct="36"></div></div></td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">ScrewdriverToBasket</td><td style="text-align:center;">15</td><td style="text-align:center;">1.5</td><td style="text-align:center; font-weight:700; color:#D94F1E;">30</td><td style="text-align:center; font-weight:700; color:#D94F1E;">1.1</td><td style="text-align:center;"><span class="barlabel">27%</span><div class="btrack"><div class="bfill" data-pct="27"></div></div></td></tr>
+
+          <tr style="border-top:1px solid #e8e5e0;"><td rowspan="3" style="padding:0.45rem 0.6rem; vertical-align:middle; font-weight:700; color:#111;">ALOHA<br><small style="font-weight:400; color:#888;">Single Arm</small></td><td style="padding:0.45rem 0.6rem;">BananaToPot</td><td style="text-align:center;">65</td><td style="text-align:center;">5.1</td><td style="text-align:center; font-weight:700; color:#D94F1E;">75</td><td style="text-align:center; font-weight:700; color:#D94F1E;">2.9</td><td style="text-align:center;"><span class="barlabel">43%</span><div class="btrack"><div class="bfill" data-pct="43"></div></div></td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">CubeToDrawer</td><td style="text-align:center; font-weight:700;">75</td><td style="text-align:center;">5.6</td><td style="text-align:center;">60</td><td style="text-align:center; font-weight:700; color:#D94F1E;">3.2</td><td style="text-align:center;"><span class="barlabel">43%</span><div class="btrack"><div class="bfill" data-pct="43"></div></div></td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">Block Stacking</td><td style="text-align:center; font-weight:700;">80</td><td style="text-align:center;">2.8</td><td style="text-align:center;">75</td><td style="text-align:center; font-weight:700; color:#D94F1E;">1.4</td><td style="text-align:center;"><span class="barlabel">50%</span><div class="btrack"><div class="bfill" data-pct="50"></div></div></td></tr>
+
+          <tr style="border-top:1px solid #e8e5e0;"><td rowspan="2" style="padding:0.45rem 0.6rem; vertical-align:middle; font-weight:700; color:#111;">ALOHA<br><small style="font-weight:400; color:#888;">Bimanual</small></td><td style="padding:0.45rem 0.6rem;">Fold Shorts</td><td style="text-align:center;">90</td><td style="text-align:center;">6.5</td><td style="text-align:center; font-weight:700; color:#D94F1E;">95</td><td style="text-align:center; font-weight:700; color:#D94F1E;">4.4</td><td style="text-align:center;"><span class="barlabel">32%</span><div class="btrack"><div class="bfill" data-pct="32"></div></div></td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">Fly Towel</td><td style="text-align:center; font-weight:700;">75</td><td style="text-align:center;">3.2</td><td style="text-align:center;">70</td><td style="text-align:center; font-weight:700; color:#D94F1E;">2.1</td><td style="text-align:center;"><span class="barlabel">34%</span><div class="btrack"><div class="bfill" data-pct="34"></div></div></td></tr>
+
+          <tr style="border-top:2px solid #111;">
+            <td colspan="2" style="padding:0.5rem 0.6rem; font-weight:700; text-align:right;">Average / Total</td>
+            <td style="text-align:center; font-weight:700;">73.5</td>
+            <td style="text-align:center; font-weight:700;">43.4h</td>
+            <td style="text-align:center; font-weight:700; color:#D94F1E;">75.9</td>
+            <td style="text-align:center; font-weight:700; color:#D94F1E;">27.7h</td>
+            <td style="text-align:center;"><span class="barlabel" style="font-weight:700; color:#D94F1E;">36%</span><div class="btrack"><div class="bfill" data-pct="36"></div></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- divider -->
+    <div style="border-top:0.5px solid #e0ddd8; margin:0 0 2.5rem;"></div>
+
+    <!-- ── SIMULATION BENCHMARKS ── -->
+    <p style="font-family:'Georgia',serif; font-size:0.65rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 0.9rem;">Simulation Experiments</p>
+
+    <!-- Sim video row -->
+    <div style="position:relative; margin-bottom:0.75rem;">
+      <button onclick="scrollRow('sim-row',-1)" style="position:absolute; left:-1.5rem; top:50%; transform:translateY(-50%); z-index:2; background:#111; border:none; color:#fff; width:2rem; height:2rem; border-radius:50%; cursor:pointer; font-size:1rem; line-height:1;">‹</button>
+      <div id="sim-row" style="display:flex; gap:12px; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; padding:4px 0; justify-content:center;">
+        <div class="vcard">
+          <video muted loop autoplay loop muted playsinline class="vthumb">
+            <source src="static/videos/libero.mp4" type="video/mp4">
+          </video>
+          <p class="vlabel">LIBERO</p>
+        </div>
+        <div class="vcard">
+          <video muted loop autoplay loop muted playsinline class="vthumb">
+            <source src="static/videos/robocasa.mp4" type="video/mp4">
+          </video>
+          <p class="vlabel">RoboCasa</p>
+        </div>
+        <div class="vcard">
+          <video muted loop autoplay loop muted playsinline class="vthumb">
+            <source src="static/videos/simplerenv.mp4" type="video/mp4">
+          </video>
+          <p class="vlabel">SimplerEnv</p>
+        </div>
+      </div>
+      <button onclick="scrollRow('sim-row',1)" style="position:absolute; right:-1.5rem; top:50%; transform:translateY(-50%); z-index:2; background:#111; border:none; color:#fff; width:2rem; height:2rem; border-radius:50%; cursor:pointer; font-size:1rem; line-height:1;">›</button>
+    </div>
+
+    <!-- LIBERO table -->
+    <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#888; margin:1.75rem 0 0.6rem; text-align:center;">LIBERO benchmark — comparison with training-free acceleration methods.</p>
+    <div style="overflow-x:auto; margin-bottom:2.5rem;">
+      <table style="width:100%; border-collapse:collapse; font-family:'Georgia',serif; font-size:0.86rem; color:#222;">
+        <thead>
+          <tr style="border-bottom:2px solid #111;">
+            <th style="text-align:left; padding:0.5rem 0.6rem; font-weight:700;">Method</th>
+            <th style="text-align:center; padding:0.5rem 0.4rem; color:#888; font-weight:600; font-size:0.78rem; letter-spacing:0.05em;">Spatial</th>
+            <th style="text-align:center; padding:0.5rem 0.4rem; color:#888; font-weight:600; font-size:0.78rem; letter-spacing:0.05em;">Object</th>
+            <th style="text-align:center; padding:0.5rem 0.4rem; color:#888; font-weight:600; font-size:0.78rem; letter-spacing:0.05em;">Goal</th>
+            <th style="text-align:center; padding:0.5rem 0.4rem; color:#888; font-weight:600; font-size:0.78rem; letter-spacing:0.05em;">Long</th>
+            <th style="text-align:center; padding:0.5rem 0.4rem; font-weight:700;">Avg SR</th>
+            <th style="text-align:center; padding:0.5rem 0.4rem; font-weight:700;">Speedup ↑</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-top:1px solid #e8e5e0;"><td colspan="7" style="padding:0.4rem 0.6rem; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; color:#aaa; text-transform:uppercase;">OpenVLA-OFT group</td></tr>
+          <!-- <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">OpenVLA-OFT</td><td style="text-align:center;">97.6</td><td style="text-align:center;">96.5</td><td style="text-align:center;">97.9</td><td style="text-align:center;">94.5</td><td style="text-align:center; font-weight:700;">96.6</td><td style="text-align:center;">1.00×</td></tr> -->
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">FastV</td><td style="text-align:center;">94.6</td><td style="text-align:center;">95.8</td><td style="text-align:center;">94.0</td><td style="text-align:center;">88.8</td><td style="text-align:center;">93.3</td><td style="text-align:center;">1.44×</td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">DivPrune</td><td style="text-align:center;">92.4</td><td style="text-align:center;">91.2</td><td style="text-align:center;">89.0</td><td style="text-align:center;">84.8</td><td style="text-align:center;">89.4</td><td style="text-align:center;">1.46×</td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">EfficientVLA</td><td style="text-align:center;">96.5</td><td style="text-align:center;">91.1</td><td style="text-align:center;">96.0</td><td style="text-align:center;">72.1</td><td style="text-align:center;">88.9</td><td style="text-align:center;">1.52×</td></tr>
+          <!-- <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">ADP</td><td style="text-align:center;">97.6</td><td style="text-align:center;">98.4</td><td style="text-align:center;">97.4</td><td style="text-align:center;">84.2</td><td style="text-align:center;">94.4</td><td style="text-align:center;">1.35×</td></tr> -->
+
+          <tr style="border-top:1px solid #e8e5e0;"><td colspan="7" style="padding:0.4rem 0.6rem; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; color:#aaa; text-transform:uppercase;">π0 group</td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">π0</td><td style="text-align:center;">94.6</td><td style="text-align:center;">98.2</td><td style="text-align:center;">95.4</td><td style="text-align:center;">90.0</td><td style="text-align:center; font-weight:700;">94.6</td><td style="text-align:center;">1.00×</td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">π0-SpecPrune-VLA</td><td style="text-align:center;">96.6</td><td style="text-align:center;">98.0</td><td style="text-align:center;">95.2</td><td style="text-align:center;">84.2</td><td style="text-align:center;">93.5</td><td style="text-align:center;">1.31×</td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0; background:#fdf9f7;">
+            <td style="padding:0.45rem 0.6rem; font-weight:700;">π0-CLP <span style="background:#D94F1E; color:#fff; font-size:0.68rem; padding:1px 7px; border-radius:999px; margin-left:4px; font-weight:600;">Ours</span></td>
+            <td style="text-align:center;">95.0</td><td style="text-align:center; font-weight:700;">99.2</td><td style="text-align:center;">95.0</td><td style="text-align:center;">86.4</td>
+            <td style="text-align:center; font-weight:700; color:#D94F1E;">93.9</td>
+            <td style="text-align:center; font-weight:700; color:#D94F1E;">1.39×</td>
+          </tr>
+
+          <tr style="border-top:1px solid #e8e5e0;"><td colspan="7" style="padding:0.4rem 0.6rem; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; color:#aaa; text-transform:uppercase;">GR00T-N1.5 group</td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">GR00T-N1.5</td><td style="text-align:center;">90.8</td><td style="text-align:center;">98.4</td><td style="text-align:center;">95.4</td><td style="text-align:center;">91.0</td><td style="text-align:center; font-weight:700;">93.9</td><td style="text-align:center;">1.00×</td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0; background:#fdf9f7;">
+            <td style="padding:0.45rem 0.6rem; font-weight:700;">GR00T-N1.5-CLP <span style="background:#D94F1E; color:#fff; font-size:0.68rem; padding:1px 7px; border-radius:999px; margin-left:4px; font-weight:600;">Ours</span></td>
+            <td style="text-align:center;">89.4</td><td style="text-align:center; font-weight:700;">98.8</td><td style="text-align:center; font-weight:700;">95.8</td><td style="text-align:center;">88.6</td>
+            <td style="text-align:center; font-weight:700; color:#D94F1E;">93.0</td>
+            <td style="text-align:center; font-weight:700; color:#D94F1E;">1.42×</td>
+          </tr>
+
+          <tr style="border-top:1px solid #e8e5e0;"><td colspan="7" style="padding:0.4rem 0.6rem; font-size:0.72rem; font-weight:700; letter-spacing:0.1em; color:#aaa; text-transform:uppercase;">SmolVLA group</td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">SmolVLA</td><td style="text-align:center;">71.8</td><td style="text-align:center;">92.2</td><td style="text-align:center;">87.4</td><td style="text-align:center;">57.2</td><td style="text-align:center; font-weight:700;">77.15</td><td style="text-align:center;">1.00×</td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0; background:#fdf9f7;">
+            <td style="padding:0.45rem 0.6rem; font-weight:700;">SmolVLA-CLP <span style="background:#D94F1E; color:#fff; font-size:0.68rem; padding:1px 7px; border-radius:999px; margin-left:4px; font-weight:600;">Ours</span></td>
+            <td style="text-align:center; font-weight:700;">75.6</td><td style="text-align:center; font-weight:700;">93.0</td><td style="text-align:center;">81.6</td><td style="text-align:center;">56.2</td>
+            <td style="text-align:center; font-weight:700; color:#D94F1E;">76.75</td>
+            <td style="text-align:center; font-weight:700; color:#D94F1E;">1.47×</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SimplerEnv table -->
+    <p style="font-family:'Georgia',serif; font-size:0.82rem; color:#888; margin:0 0 0.6rem; text-align:center;">GR00T-N1.5 on SimplerEnv (WidowX) — task success rate (%).</p>
+    <div style="overflow-x:auto; margin-bottom:3rem;">
+      <table style="width:100%; border-collapse:collapse; font-family:'Georgia',serif; font-size:0.86rem; color:#222;">
+        <thead>
+          <tr style="border-bottom:2px solid #111;">
+            <th style="text-align:left; padding:0.5rem 0.6rem; font-weight:700;">Task</th>
+            <th style="text-align:center; padding:0.5rem 0.6rem; font-weight:600; color:#888; font-size:0.78rem; letter-spacing:0.05em;">GR00T-N1.5</th>
+            <th style="text-align:center;padding:0.5rem 0.6rem; font-weight:700; color:#D94F1E;">GR00T-N1.5-CLP <span style="background:#D94F1E; color:#fff; font-size:0.68rem; padding:1px 7px; border-radius:999px; margin-left:4px; font-weight:600;">Ours</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">Carrot Plate</td><td style="text-align:center;">26</td><td style="text-align:center; font-weight:700; color:#D94F1E;">34 <span style="font-size:0.78rem; font-weight:400;">↑8%</span></td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">Eggplant Basket</td><td style="text-align:center; font-weight:700;">34</td><td style="text-align:center;">14</td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">Spoon Towel</td><td style="text-align:center;">18</td><td style="text-align:center; font-weight:700; color:#D94F1E;">38 <span style="font-size:0.78rem; font-weight:400;">↑20%</span></td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">Stack Cube</td><td style="text-align:center; font-weight:700;">8</td><td style="text-align:center;">4</td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">Eggplant Sink</td><td style="text-align:center;">8</td><td style="text-align:center; font-weight:700; color:#D94F1E;">16 <span style="font-size:0.78rem; font-weight:400;">↑8%</span></td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">Close Drawer</td><td style="text-align:center;">12</td><td style="text-align:center; font-weight:700; color:#D94F1E;">24 <span style="font-size:0.78rem; font-weight:400;">↑12%</span></td></tr>
+          <tr style="border-top:0.5px solid #e8e5e0;"><td style="padding:0.45rem 0.6rem;">Open Drawer</td><td style="text-align:center; font-weight:700;">10</td><td style="text-align:center; font-weight:700;">10</td></tr>
+          <tr style="border-top:2px solid #111;">
+            <td style="padding:0.5rem 0.6rem; font-weight:700;">Average</td>
+            <td style="text-align:center; font-weight:700;">16.57</td>
+            <td style="text-align:center; font-weight:700; color:#D94F1E;">20.0 <span style="font-size:0.78rem; font-weight:400;">↑3.43%</span></td>
+          </tr>
+          <tr style="border-top:0.5px solid #e8e5e0; background:#fdf9f7;">
+            <td style="padding:0.45rem 0.6rem; font-weight:700;">Training Time (hrs)</td>
+            <td style="text-align:center; font-weight:700;">22.9</td>
+            <td style="text-align:center; font-weight:700; color:#D94F1E;">15.7 <span style="font-size:0.78rem; font-weight:400;">↓31%</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+<!-- LIBERO + RoboCasa bar charts, side by side -->
+<div style="display:flex; flex-wrap:wrap; gap:24px; justify-content:center; margin-bottom:3rem;">
+
+  <div style="flex:1 1 400px; max-width:480px;">
+    <p style="font-family:'Georgia',serif; font-size:0.78rem; color:#888; margin:0 0 0.5rem; text-align:center;">π0 on LIBERO — trained on 10% data (% Success Rate).</p>
+    <div style="position:relative; height:260px;">
+      <canvas id="liberoChart"></canvas>
+    </div>
+  </div>
+
+  <div style="flex:1 1 400px; max-width:480px;">
+    <p style="font-family:'Georgia',serif; font-size:0.78rem; color:#888; margin:0 0 0.5rem; text-align:center;">π0 on RoboCasa — 30 demonstrations (% Success Rate).</p>
+    <div style="position:relative; height:260px;">
+      <canvas id="robocasaChart"></canvas>
+    </div>
+  </div>
+
+</div>
+
+
+</section>
+
+<style>
+/* video cards */
+.vrow { display:flex; gap:12px; overflow-x:auto; scroll-behavior:smooth; scrollbar-width:none; padding:4px 0; }
+.vrow::-webkit-scrollbar { display:none; }
+.vcard { flex:0 0 auto; width:220px; }
+.vthumb { width:220px; height:138px; object-fit:contain; background:#111; border-radius:10px; display:block; cursor:pointer; }
+.vlabel { font-family:'Georgia',serif; font-size:0.78rem; color:#555; text-align:center; margin:0.35rem 0 0; }
+/* scroll buttons */
+.vrow-btn { position:absolute; top:50%; transform:translateY(-60%); z-index:2; background:#111; border:none; color:#fff; width:1.9rem; height:1.9rem; border-radius:50%; cursor:pointer; font-size:1rem; line-height:1.9rem; text-align:center; padding:0; }
+.vrow-btn:hover { background:#D94F1E; }
+/* progress bars */
+.btrack { display:inline-block; width:60px; height:6px; background:#e8e5e0; border-radius:999px; overflow:hidden; vertical-align:middle; margin-left:4px; }
+.bfill { height:100%; width:0; background:#D94F1E; border-radius:999px; transition:width 1.2s cubic-bezier(.4,0,.2,1); }
+.barlabel { font-family:'Georgia',serif; font-size:0.8rem; font-weight:600; color:#D94F1E; vertical-align:middle; }
+</style>
+
+<script>
+function scrollRow(id, dir) {
+  var el = document.getElementById(id);
+  el.scrollBy({ left: dir * 248, behavior: 'smooth' });
+}
+(function() {
+  var animated = false;
+  var obs = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !animated) {
+      animated = true;
+      document.querySelectorAll('.bfill').forEach(function(b) {
+        var p = b.getAttribute('data-pct');
+        setTimeout(function() { b.style.width = p + '%'; }, 120);
+      });
+      obs.disconnect();
+    }
+  }, { threshold: 0.2 });
+  obs.observe(document.getElementById('combined-table-body'));
+})();
+
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+  const chartFont = "'Georgia', serif";
+  const colors = { base: '#bbb6ae', mole: '#555', ours: '#D94F1E' };
+
+  function makeBarChart(ctx, labels, datasets) {
+    return new Chart(ctx, {
+      type: 'bar',
+      data: { labels, datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: { font: { family: chartFont, size: 10 }, color: '#333', boxWidth: 12 }
+          },
+          tooltip: {
+            bodyFont: { family: chartFont, size: 11 },
+            titleFont: { family: chartFont, size: 11 }
+          }
+        },
+        scales: {
+          x: { ticks: { font: { family: chartFont, size: 10 }, color: '#333' }, grid: { display: false } },
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: { font: { family: chartFont, size: 9 }, color: '#888' },
+            grid: { color: '#eee' }
+          }
+        }
+      }
+    });
+  }
+
+  // LIBERO 10% data
+  makeBarChart(document.getElementById('liberoChart'),
+    ['Long', 'Goal', 'Object', 'Spatial', 'Average'],
+    [
+      { label: 'π0', data: [58.8, 87.8, 82.6, 81.6, 77.7], backgroundColor: colors.base, borderRadius: 4 },
+      { label: 'π0-MoLe', data: [60.2, 88.2, 86.0, 84.4, 79.7], backgroundColor: colors.mole, borderRadius: 4 },
+      { label: 'π0-CLP (Ours)', data: [66.2, 90.6, 89.0, 92.6, 84.6], backgroundColor: colors.ours, borderRadius: 4 }
+    ]
+  );
+
+  // RoboCasa 30 demos
+  makeBarChart(document.getElementById('robocasaChart'),
+    ['PnP Cab→Counter', 'PnP Counter→Cab', 'Coffee Setup', 'Turn Off Stove', 'Turn On Microwave', 'Average'],
+    [
+      { label: 'π0 base', data: [14, 16, 2, 2, 44, 15.6], backgroundColor: colors.base, borderRadius: 4 },
+      { label: 'π0-MoLe', data: [14, 18, 2, 4, 50, 17.6], backgroundColor: colors.mole, borderRadius: 4 },
+      { label: 'π0-CLP (Ours)', data: [16, 16, 4, 4, 50, 18], backgroundColor: colors.ours, borderRadius: 4 }
+    ]
+  );
+</script>
+
+<!-- End Experiments and Results -->
+
+
+
+<section class="section" id="BibTeX" style="background:#f7f4ef; padding:1rem 1.5rem 4.5rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+ 
+        <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#D94F1E; margin-bottom:0.6rem;">Citation</p>
+ 
+        <div class="bibtex-header" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1.4rem;">
+          <h2 class="title" style="font-family:'Georgia','Times New Roman',serif; font-size:2.1rem; font-weight:700; color:#111; letter-spacing:-0.3px; margin:0;">BibTeX</h2>
+ 
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard" style="
+            display:inline-flex; align-items:center; gap:0.45rem;
+            font-family:'Georgia',serif; font-weight:700; font-size:0.8rem;
+            letter-spacing:0.02em; color:#fff; background:#D94F1E;
+            border:none; border-radius:6px; padding:0.55rem 1.05rem;
+            cursor:pointer;
+          ">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+ 
+        <pre id="bibtex-code" style="
+          background:#1f1a16; color:#f3ece2;
+          border-left:4px solid #D94F1E; border-radius:8px;
+          padding:1.5rem; overflow-x:auto; margin:0;
+          font-family:'Courier New', Courier, monospace; font-size:0.85rem; line-height:1.7;
+        "><code>@article{NguyenGiaBinh2026FewerLayers,
+  title={Finetuning Vision-Language-Action Models Requires Fewer Layers Than You Think},
+  author={Nguyen Gia Binh and Trong-Bao Ho and Thien-Loc Ha and Khoa Vo and Philip Lund M{\o}ller and Quang Tan Nguyen and Long Dinh and Tung Minh Luu and Tuan Quang Dam and Vu N. Duong and Trung Le and Nghi D. Q. Bui and Minh Nhat Vu and Tran Nguyen Le and An Thai Le and Ngan Le and Daniel Sonntag and James Zou and Jan Peters and Duy Minh Ho Nguyen and Vien Anh Ngo},
+  journal={arXiv preprint},
+  year={2026},
+  url={https://your-domain.com/your-project-page}
+}</code></pre>
+ 
+      </div>
+    </div>
+  </div>
+</section>
+<!--End BibTex citation -->
+
+
+
+
+<footer style="position:relative; padding:2rem 2.5rem; border-top:0.5px solid #e0ddd8; background-color:#faf8f4; background-image:radial-gradient(circle, #ddd9d2 1px, transparent 1px); background-size:16px 16px;">
+  <div style="display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; flex-wrap:wrap; gap:0.5rem;">
+    <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#888; margin:0;">
+      © 2026 — Project Site Template
+    </p>
+    <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#888; margin:0;">
+      Built for academic use
+    </p>
+  </div>
+</footer>
+
+
+  </body>
+  </html>
