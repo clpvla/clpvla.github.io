@@ -521,7 +521,7 @@
 
 
 <!-- Paper abstract -->
-<section class="section hero is-light" style="background: #f7f4ef; padding: 4rem 1.5rem;">
+<section class="section hero is-light" style="background: #f7f4ef; padding: 4rem 1.5rem;" id="abstract">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
@@ -595,7 +595,7 @@
 
 
 <!-- Contributions -->
-<section class="section" style="background:#fdf9f7; padding: 4rem 1.5rem;">
+<section class="section" style="background:#fdf9f7; padding: 4rem 1.5rem;" id="contributions">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
@@ -649,7 +649,7 @@
 
 
 <!-- Key Findings -->
-<section class="section" style="background:#fff; padding: 4rem 1.5rem;">
+<section class="section" style="background:#fff; padding: 4rem 1.5rem;" id="kf">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
@@ -793,7 +793,7 @@
 
 
 <!-- Method Section -->
-<section class="section" style="background:#fff; padding: 4rem 1.5rem;">
+<section class="section" style="background:#fff; padding: 4rem 1.5rem;" id="method">
   <div class="container is-max-desktop">
 
     <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#D94F1E; margin-bottom:0.6rem;">Method</p>
@@ -924,7 +924,7 @@
 
 
 <!-- Experiments and Results -->
-<section class="section" style="background:#fff; padding: 4rem 1.5rem;">
+<section class="section" style="background:#fff; padding: 4rem 1.5rem;" id="exp_res">
   <div class="container is-max-desktop">
 
     <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#D94F1E; margin-bottom:0.6rem;">Experiments &amp; Results</p>
@@ -1313,21 +1313,174 @@ function scrollRow(id, dir) {
   </div>
 </section>
 <!--End BibTex citation -->
+<!-- Left Navigation Bar -->
+<nav id="side-nav" style="
+  position: fixed;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 180px;
+">
+  <p style="font-family:'Georgia',serif; font-size:1.3rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:#aaa; margin:0 0 1rem 0.1rem;">Contents</p>
+
+  <a href="#abstract"      class="side-nav-link"><span class="side-nav-num">01</span><span class="side-nav-label">Abstract</span></a>
+  <a href="#contributions" class="side-nav-link"><span class="side-nav-num">02</span><span class="side-nav-label">Contributions</span></a>
+  <a href="#kf"            class="side-nav-link"><span class="side-nav-num">03</span><span class="side-nav-label">Key Findings</span></a>
+  <a href="#method"        class="side-nav-link"><span class="side-nav-num">04</span><span class="side-nav-label">Method</span></a>
+  <a href="#exp_res"       class="side-nav-link"><span class="side-nav-num">05</span><span class="side-nav-label">Experimental &amp; Results</span></a>
+  <a href="#BibTeX"        class="side-nav-link"><span class="side-nav-num">06</span><span class="side-nav-label">Citation</span></a>
+</nav>
+
+<style>
+  .side-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    text-decoration: none;
+    padding: 0.45rem 0.1rem;
+    position: relative;
+    transition: color 0.2s;
+  }
+
+  /* Line */
+  .side-nav-link::before {
+    content: '';
+    position: absolute;
+    left: -1.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 1.5px;
+    background: #D94F1E;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  /* Dot at the end of the line */
+  .side-nav-link::after {
+    content: '';
+    position: absolute;
+    left: calc(-1.6rem + 22px);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #D94F1E;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .side-nav-link.active::before,
+  .side-nav-link.active::after,
+  .side-nav-link:hover::before,
+  .side-nav-link:hover::after {
+    opacity: 1;
+  }
+
+  .side-nav-num {
+    font-family: 'Georgia', serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #ccc;
+    min-width: 1.4rem;
+    transition: color 0.2s;
+  }
+  .side-nav-label {
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #aaa;
+    transition: color 0.2s;
+  }
+
+  /* HOVER: both number and label go orange */
+  .side-nav-link:hover .side-nav-num,
+  .side-nav-link:hover .side-nav-label { color: #D94F1E; }
+
+  /* ACTIVE: only number goes orange, label stays gray */
+  .side-nav-link.active .side-nav-num  { color: #D94F1E; }
+  .side-nav-link.active .side-nav-label  { color: #D94F1E; }
 
 
+  #side-nav { display: none; } /* hidden by default, JS shows it only when there's room */
+</style>
+
+<script>
+(function () {
+  var nav = document.getElementById('side-nav');
+  var NAV_WIDTH = 200;
+  var CONTENT_WIDTH = 960;
+  var MIN_SCREEN = CONTENT_WIDTH + NAV_WIDTH * 2;
+
+  function checkSpace() {
+    nav.style.display = window.innerWidth >= MIN_SCREEN ? 'flex' : 'none';
+  }
+
+  window.addEventListener('resize', checkSpace);
+  checkSpace();
+
+  var sections = [
+    { id: 'abstract'      },
+    { id: 'contributions' },
+    { id: 'kf'            },
+    { id: 'method'        },
+    { id: 'exp_res'       },
+    { id: 'BibTeX'        },
+  ];
+
+  var links = document.querySelectorAll('.side-nav-link');
+
+  function onScroll() {
+    var scrollY = window.scrollY + window.innerHeight * 0.35;
+    var active = sections[0].id;
+
+    // If we're at (or near) the bottom of the page, force the last section active —
+    // this fixes the case where the last section never crosses the threshold
+    // because there isn't enough page left below it to scroll past.
+    var atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+
+    if (atBottom) {
+      active = sections[sections.length - 1].id;
+    } else {
+      sections.forEach(function (s) {
+        var el = document.getElementById(s.id);
+        if (el && el.getBoundingClientRect().top + window.scrollY <= scrollY) {
+          active = s.id;
+        }
+      });
+    }
+
+    links.forEach(function (link) {
+      var href = link.getAttribute('href').replace('#', '');
+      link.classList.toggle('active', href === active);
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+})();
+</script>
 
 
 <footer style="position:relative; padding:2rem 2.5rem; border-top:0.5px solid #e0ddd8; background-color:#faf8f4; background-image:radial-gradient(circle, #ddd9d2 1px, transparent 1px); background-size:16px 16px;">
   <div style="display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto; flex-wrap:wrap; gap:0.5rem;">
-    <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#888; margin:0;">
-      © 2026 — Project Site Template
+
+    <p style="font-family:'Georgia',serif; font-size:0.85rem; color:#444; margin:0;">
+      Under Review &nbsp;·&nbsp; Correspondence: <a href="mailto:v.duynhm@vinrobotics.net" style="color:#D94F1E; text-decoration:none;">v.duynhm@vinrobotics.net</a>
     </p>
+
     <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:#888; margin:0;">
-      Built for academic use
+      © 2026 Authors · VinRobotics, VinUniversity &amp; Collaborators
     </p>
+
   </div>
 </footer>
-
 
   </body>
   </html>
