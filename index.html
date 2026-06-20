@@ -654,6 +654,138 @@
 
 
 
+
+<!-- Method Section -->
+<section class="section" style="background:#fff; padding: 4rem 1.5rem;" id="method">
+  <div class="container is-max-desktop">
+
+    <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#D94F1E; margin-bottom:0.6rem;">Method</p>
+    <h2 style="font-family:'Georgia','Times New Roman',serif; font-size:2.1rem; font-weight:700; line-height:1.25; color:#111; margin-bottom:2.5rem; letter-spacing:-0.3px;">One forward pass. No extra modules. Up to 50% faster training.</h2>
+
+    <div style="display:flex; flex-direction:column; align-items:center; gap:2.5rem;">
+
+      <!-- Video — centered, full width -->
+      <div style="width:100%; max-width:820px; position:relative;" id="clp-video-wrap">
+        <video id="clp-video" autoplay loop muted playsinline style="width:100%; border-radius:10px; background:#111; cursor:pointer; display:block;">
+          <source src="static/videos/CLP_v3.mp4" type="video/mp4">
+        </video>
+        <div id="clp-controls" style="position:absolute; bottom:0; left:0; right:0; padding:0.5rem 0.75rem; background:linear-gradient(transparent, rgba(0,0,0,0.55)); border-radius:0 0 10px 10px; opacity:0; transition:opacity 0.2s; display:flex; align-items:center; gap:0.6rem;">
+          <button id="clp-playbtn" onclick="clpTogglePlay()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1rem; padding:0; line-height:1; flex-shrink:0;">&#9646;&#9646;</button>
+          <input id="clp-seek" type="range" min="0" max="100" value="0" step="0.1" style="flex:1; height:3px; accent-color:#D94F1E; cursor:pointer;">
+          <span id="clp-time" style="font-family:'Georgia',serif; font-size:0.7rem; color:#ddd; white-space:nowrap; flex-shrink:0;">0:00</span>
+          <button id="clp-mutebtn" onclick="clpToggleMute()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1rem; padding:0; line-height:1; flex-shrink:0;">&#128263;</button>
+        </div>
+        <div id="clp-pause-icon" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:2.5rem; color:#fff; opacity:0; pointer-events:none; transition:opacity 0.15s; text-shadow:0 2px 8px rgba(0,0,0,0.5);">&#9646;&#9646;</div>
+      </div>
+
+      <script>
+      (function() {
+        var vid = document.getElementById('clp-video');
+        var wrap = document.getElementById('clp-video-wrap');
+        var controls = document.getElementById('clp-controls');
+        var seek = document.getElementById('clp-seek');
+        var timeEl = document.getElementById('clp-time');
+        var playBtn = document.getElementById('clp-playbtn');
+        var pauseIcon = document.getElementById('clp-pause-icon');
+        var hideTimer;
+
+        function showControls() {
+          controls.style.opacity = '1';
+          clearTimeout(hideTimer);
+          hideTimer = setTimeout(function() { if (!vid.paused) controls.style.opacity = '0'; }, 2500);
+        }
+
+        wrap.addEventListener('mouseenter', showControls);
+        wrap.addEventListener('mousemove', showControls);
+        wrap.addEventListener('mouseleave', function() {
+          if (!vid.paused) { clearTimeout(hideTimer); controls.style.opacity = '0'; }
+        });
+
+        vid.addEventListener('click', function() { clpTogglePlay(); });
+
+        window.clpTogglePlay = function() {
+          if (vid.paused) {
+            vid.play();
+            playBtn.innerHTML = '&#9646;&#9646;';
+            flashIcon('&#9654;');
+          } else {
+            vid.pause();
+            playBtn.innerHTML = '&#9654;';
+            flashIcon('&#9646;&#9646;');
+            controls.style.opacity = '1';
+          }
+          showControls();
+        };
+
+        window.clpToggleMute = function() {
+          var video = document.getElementById('clp-video');
+          video.muted = !video.muted;
+          document.getElementById('clp-mutebtn').innerHTML = video.muted ? '&#128263;' : '&#128266;';
+        };
+
+        function flashIcon(icon) {
+          pauseIcon.innerHTML = icon;
+          pauseIcon.style.opacity = '0.85';
+          setTimeout(function() { pauseIcon.style.opacity = '0'; }, 600);
+        }
+
+        vid.addEventListener('timeupdate', function() {
+          if (!vid.duration) return;
+          seek.value = (vid.currentTime / vid.duration) * 100;
+          var m = Math.floor(vid.currentTime / 60);
+          var s = Math.floor(vid.currentTime % 60);
+          timeEl.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+        });
+
+        seek.addEventListener('input', function() {
+          if (vid.duration) vid.currentTime = (seek.value / 100) * vid.duration;
+          showControls();
+        });
+
+        vid.loop = true;
+      })();
+      </script>
+
+      <!-- Steps — below video, 4 columns on desktop -->
+        <div style="width:100%; max-width:820px;">
+          <p style="font-family:'Georgia',serif; font-size:0.78rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 1.4rem; text-align:center;">CKA-Guided Layer Pruning (CLP)</p>
+
+          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:0.5px solid #e8e5e0; border-radius:8px; overflow:hidden;">
+
+            <div style="padding:1.25rem 1.1rem; border-right:0.5px solid #e8e5e0;">
+              <span style="font-family:'Georgia',serif; font-size:0.85rem; font-weight:700; color:#D94F1E; display:block; margin-bottom:0.45rem;">01</span>
+              <p style="font-family:'Georgia',serif; font-size:1rem; font-weight:700; color:#111; margin:0 0 0.35rem;">CKA Profiling</p>
+              <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#555; margin:0; line-height:1.6;">Feed sample batches through the pretrained VLA and compute pairwise CKA similarity across all layers.</p>
+            </div>
+
+            <div style="padding:1.25rem 1.1rem; border-right:0.5px solid #e8e5e0;">
+              <span style="font-family:'Georgia',serif; font-size:0.85rem; font-weight:700; color:#D94F1E; display:block; margin-bottom:0.45rem;">02</span>
+              <p style="font-family:'Georgia',serif; font-size:1rem; font-weight:700; color:#111; margin:0 0 0.35rem;">Block Identification</p>
+              <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#555; margin:0; line-height:1.6;">Group consecutive high-similarity layers (CKA ≥ τ) into redundant blocks; keep only the first layer of each.</p>
+            </div>
+
+            <div style="padding:1.25rem 1.1rem; border-right:0.5px solid #e8e5e0;">
+              <span style="font-family:'Georgia',serif; font-size:0.85rem; font-weight:700; color:#D94F1E; display:block; margin-bottom:0.45rem;">03</span>
+              <p style="font-family:'Georgia',serif; font-size:1rem; font-weight:700; color:#111; margin:0 0 0.35rem;">Training-free Compression</p>
+              <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#555; margin:0; line-height:1.6;">Prune 33–66% of transformer layers with ~30% FLOP reduction — no routing, no auxiliary modules.</p>
+            </div>
+
+            <div style="padding:1.25rem 1.1rem;">
+              <span style="font-family:'Georgia',serif; font-size:0.85rem; font-weight:700; color:#D94F1E; display:block; margin-bottom:0.45rem;">04</span>
+              <p style="font-family:'Georgia',serif; font-size:1rem; font-weight:700; color:#111; margin:0 0 0.35rem;">Fine-tune &amp; Deploy</p>
+              <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#555; margin:0; line-height:1.6;">Fine-tune the pruned model on the target task. Training time cuts up to 50%; inference up to 30–50% faster.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- End Method Section -->
+
+
 <!-- Key Findings -->
 <section class="section" style="background:#fff; padding: 4rem 1.5rem;" id="kf">
   <div class="container is-max-desktop">
@@ -797,136 +929,6 @@
 
 
 
-
-<!-- Method Section -->
-<section class="section" style="background:#fff; padding: 4rem 1.5rem;" id="method">
-  <div class="container is-max-desktop">
-
-    <p style="font-family:'Georgia',serif; font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#D94F1E; margin-bottom:0.6rem;">Method</p>
-    <h2 style="font-family:'Georgia','Times New Roman',serif; font-size:2.1rem; font-weight:700; line-height:1.25; color:#111; margin-bottom:2.5rem; letter-spacing:-0.3px;">One forward pass. No extra modules. Up to 50% faster training.</h2>
-
-    <div style="display:flex; flex-direction:column; align-items:center; gap:2.5rem;">
-
-      <!-- Video — centered, full width -->
-      <div style="width:100%; max-width:820px; position:relative;" id="clp-video-wrap">
-        <video id="clp-video" autoplay loop muted playsinline style="width:100%; border-radius:10px; background:#111; cursor:pointer; display:block;">
-          <source src="static/videos/CLP_v3.mp4" type="video/mp4">
-        </video>
-        <div id="clp-controls" style="position:absolute; bottom:0; left:0; right:0; padding:0.5rem 0.75rem; background:linear-gradient(transparent, rgba(0,0,0,0.55)); border-radius:0 0 10px 10px; opacity:0; transition:opacity 0.2s; display:flex; align-items:center; gap:0.6rem;">
-          <button id="clp-playbtn" onclick="clpTogglePlay()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1rem; padding:0; line-height:1; flex-shrink:0;">&#9646;&#9646;</button>
-          <input id="clp-seek" type="range" min="0" max="100" value="0" step="0.1" style="flex:1; height:3px; accent-color:#D94F1E; cursor:pointer;">
-          <span id="clp-time" style="font-family:'Georgia',serif; font-size:0.7rem; color:#ddd; white-space:nowrap; flex-shrink:0;">0:00</span>
-          <button id="clp-mutebtn" onclick="clpToggleMute()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1rem; padding:0; line-height:1; flex-shrink:0;">&#128263;</button>
-        </div>
-        <div id="clp-pause-icon" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:2.5rem; color:#fff; opacity:0; pointer-events:none; transition:opacity 0.15s; text-shadow:0 2px 8px rgba(0,0,0,0.5);">&#9646;&#9646;</div>
-      </div>
-
-      <script>
-      (function() {
-        var vid = document.getElementById('clp-video');
-        var wrap = document.getElementById('clp-video-wrap');
-        var controls = document.getElementById('clp-controls');
-        var seek = document.getElementById('clp-seek');
-        var timeEl = document.getElementById('clp-time');
-        var playBtn = document.getElementById('clp-playbtn');
-        var pauseIcon = document.getElementById('clp-pause-icon');
-        var hideTimer;
-
-        function showControls() {
-          controls.style.opacity = '1';
-          clearTimeout(hideTimer);
-          hideTimer = setTimeout(function() { if (!vid.paused) controls.style.opacity = '0'; }, 2500);
-        }
-
-        wrap.addEventListener('mouseenter', showControls);
-        wrap.addEventListener('mousemove', showControls);
-        wrap.addEventListener('mouseleave', function() {
-          if (!vid.paused) { clearTimeout(hideTimer); controls.style.opacity = '0'; }
-        });
-
-        vid.addEventListener('click', function() { clpTogglePlay(); });
-
-        window.clpTogglePlay = function() {
-          if (vid.paused) {
-            vid.play();
-            playBtn.innerHTML = '&#9646;&#9646;';
-            flashIcon('&#9654;');
-          } else {
-            vid.pause();
-            playBtn.innerHTML = '&#9654;';
-            flashIcon('&#9646;&#9646;');
-            controls.style.opacity = '1';
-          }
-          showControls();
-        };
-
-        window.clpToggleMute = function() {
-          var video = document.getElementById('clp-video');
-          video.muted = !video.muted;
-          document.getElementById('clp-mutebtn').innerHTML = video.muted ? '&#128263;' : '&#128266;';
-        };
-
-        function flashIcon(icon) {
-          pauseIcon.innerHTML = icon;
-          pauseIcon.style.opacity = '0.85';
-          setTimeout(function() { pauseIcon.style.opacity = '0'; }, 600);
-        }
-
-        vid.addEventListener('timeupdate', function() {
-          if (!vid.duration) return;
-          seek.value = (vid.currentTime / vid.duration) * 100;
-          var m = Math.floor(vid.currentTime / 60);
-          var s = Math.floor(vid.currentTime % 60);
-          timeEl.textContent = m + ':' + (s < 10 ? '0' : '') + s;
-        });
-
-        seek.addEventListener('input', function() {
-          if (vid.duration) vid.currentTime = (seek.value / 100) * vid.duration;
-          showControls();
-        });
-
-        vid.loop = true;
-      })();
-      </script>
-
-      <!-- Steps — below video, 4 columns on desktop -->
-        <div style="width:100%; max-width:820px;">
-          <p style="font-family:'Georgia',serif; font-size:0.78rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#888; margin:0 0 1.4rem; text-align:center;">CKA-Guided Layer Pruning (CLP)</p>
-
-          <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:0.5px solid #e8e5e0; border-radius:8px; overflow:hidden;">
-
-            <div style="padding:1.25rem 1.1rem; border-right:0.5px solid #e8e5e0;">
-              <span style="font-family:'Georgia',serif; font-size:0.85rem; font-weight:700; color:#D94F1E; display:block; margin-bottom:0.45rem;">01</span>
-              <p style="font-family:'Georgia',serif; font-size:1rem; font-weight:700; color:#111; margin:0 0 0.35rem;">CKA Profiling</p>
-              <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#555; margin:0; line-height:1.6;">Feed sample batches through the pretrained VLA and compute pairwise CKA similarity across all layers.</p>
-            </div>
-
-            <div style="padding:1.25rem 1.1rem; border-right:0.5px solid #e8e5e0;">
-              <span style="font-family:'Georgia',serif; font-size:0.85rem; font-weight:700; color:#D94F1E; display:block; margin-bottom:0.45rem;">02</span>
-              <p style="font-family:'Georgia',serif; font-size:1rem; font-weight:700; color:#111; margin:0 0 0.35rem;">Block Identification</p>
-              <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#555; margin:0; line-height:1.6;">Group consecutive high-similarity layers (CKA ≥ τ) into redundant blocks; keep only the first layer of each.</p>
-            </div>
-
-            <div style="padding:1.25rem 1.1rem; border-right:0.5px solid #e8e5e0;">
-              <span style="font-family:'Georgia',serif; font-size:0.85rem; font-weight:700; color:#D94F1E; display:block; margin-bottom:0.45rem;">03</span>
-              <p style="font-family:'Georgia',serif; font-size:1rem; font-weight:700; color:#111; margin:0 0 0.35rem;">Training-free Compression</p>
-              <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#555; margin:0; line-height:1.6;">Prune 33–66% of transformer layers with ~30% FLOP reduction — no routing, no auxiliary modules.</p>
-            </div>
-
-            <div style="padding:1.25rem 1.1rem;">
-              <span style="font-family:'Georgia',serif; font-size:0.85rem; font-weight:700; color:#D94F1E; display:block; margin-bottom:0.45rem;">04</span>
-              <p style="font-family:'Georgia',serif; font-size:1rem; font-weight:700; color:#111; margin:0 0 0.35rem;">Fine-tune &amp; Deploy</p>
-              <p style="font-family:'Georgia',serif; font-size:0.95rem; color:#555; margin:0; line-height:1.6;">Fine-tune the pruned model on the target task. Training time cuts up to 50%; inference up to 30–50% faster.</p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- End Method Section -->
 
 
 <!-- Experiments and Results -->
@@ -1335,8 +1337,8 @@ function scrollRow(id, dir) {
 
   <a href="#abstract"      class="side-nav-link"><span class="side-nav-num">01</span><span class="side-nav-label">Abstract</span></a>
   <a href="#contributions" class="side-nav-link"><span class="side-nav-num">02</span><span class="side-nav-label">Contributions</span></a>
-  <a href="#kf"            class="side-nav-link"><span class="side-nav-num">03</span><span class="side-nav-label">Key Findings</span></a>
-  <a href="#method"        class="side-nav-link"><span class="side-nav-num">04</span><span class="side-nav-label">Method</span></a>
+  <a href="#method"        class="side-nav-link"><span class="side-nav-num">03</span><span class="side-nav-label">Method</span></a>
+  <a href="#kf"            class="side-nav-link"><span class="side-nav-num">04</span><span class="side-nav-label">Key Findings</span></a>
   <a href="#exp_res"       class="side-nav-link"><span class="side-nav-num">05</span><span class="side-nav-label">Experimental &amp; Results</span></a>
   <a href="#BibTeX"        class="side-nav-link"><span class="side-nav-num">06</span><span class="side-nav-label">Citation</span></a>
 </nav>
